@@ -1,4 +1,4 @@
-package ru.springsecurity.jwtappdemo.model;
+package com.tenere_bufo.itis.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;

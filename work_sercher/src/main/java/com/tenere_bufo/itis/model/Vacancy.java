@@ -1,20 +1,22 @@
 package com.tenere_bufo.itis.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Set;
 
-@Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
-@Table(name = "company")
-public class Company extends BaseEntity{
+@Table
+@Data
+public class Vacancy extends BaseEntity {
 
     @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
+    private String description;
 
-    private Set<String> vacancies;
 }

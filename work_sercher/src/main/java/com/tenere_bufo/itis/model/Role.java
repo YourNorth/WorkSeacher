@@ -1,10 +1,12 @@
-package ru.springsecurity.jwtappdemo.model;
+package com.tenere_bufo.itis.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "roles")
 @Data

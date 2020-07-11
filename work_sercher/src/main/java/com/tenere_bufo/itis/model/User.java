@@ -1,16 +1,18 @@
-package ru.springsecurity.jwtappdemo.model;
+package com.tenere_bufo.itis.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "users")
 @Data
 public class User extends BaseEntity{
 
-    @Column(name = "firstName")
+    @Column(name = "username")
     private String username;
 
     @Column(name = "firstName")
@@ -20,7 +22,7 @@ public class User extends BaseEntity{
     private String lastName;
 
     @Column(name = "email")
-    private String login;
+    private String email;
 
     @Column(name = "password")
     private String password;
