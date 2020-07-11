@@ -32,7 +32,7 @@ public class SignInController {
     @PostMapping
     public String signIn(AuthenticationRequestDto authenticationRequestDto, ModelMap modelMap, HttpSession session) {
         if (userService.signIn(authenticationRequestDto, modelMap, session)) {
-            return "redirect:/chat";
+            return "redirect:/index";
         }else{
             return "/signIn";
         }

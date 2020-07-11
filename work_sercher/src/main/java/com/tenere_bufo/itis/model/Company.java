@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
 
@@ -15,6 +16,6 @@ public class Company extends BaseEntity{
     @Column(name = "name")
     private String name;
 
-
-    private Set<String> vacancies;
+    @OneToMany
+    private Set<Vacancy> vacancies;
 }
