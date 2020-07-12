@@ -12,8 +12,8 @@ import java.util.Set;
 @Data
 public class User extends BaseEntity{
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "nickname")
+    private String nickname;
 
     @Column(name = "firstName")
     private String firstName;
@@ -29,6 +29,9 @@ public class User extends BaseEntity{
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "token", length = 501)
+    private String token;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",

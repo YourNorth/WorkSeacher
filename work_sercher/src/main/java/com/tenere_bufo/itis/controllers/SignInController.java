@@ -9,8 +9,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.logging.LogManager;
 
 @Controller
 @RequestMapping("/signIn")
@@ -25,14 +27,16 @@ public class SignInController {
 
     @GetMapping
     public String getSignIn(ModelMap modelMap){
+        LogManager.getLogManager().reset();
         Attributes.addSuccessAttributes(modelMap,"You have successfully logged in!");
         return "signIn";
     }
 
     @PostMapping
-    public String signIn(AuthenticationRequestDto authenticationRequestDto, ModelMap modelMap, HttpSession session) {
-        if (userService.signIn(authenticationRequestDto, modelMap, session)) {
-            return "redirect:/index";
+    public String signIn(AuthenticationRequestDto authenticationRequestDto, ModelMap modelMap, HttpSession session,
+                         @RequestParam("g-recaptcha-response") String captchaResponse) {
+        if (userService.signIn(authenticationRequestDto, modelMap, session, captchaResponse)) {
+            return "index";
         }else{
             return "/signIn";
         }
