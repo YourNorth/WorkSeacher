@@ -42,7 +42,7 @@
                         <div class="row align-items-center">
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.ftl">
+                                    <a href="/index">
                                         <img src="/img/logo.png" alt="">
                                     </a>
                                 </div>
@@ -51,22 +51,22 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="index.ftl">home</a></li>
-                                            <li><a href="jobs.ftl">Browse Job</a></li>
+                                            <li><a href="/index">home</a></li>
+                                            <li><a href="/jobs">Browse Job</a></li>
                                             <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="candidate.ftl">Candidates </a></li>
-                                                    <li><a href="job_details.ftl">job details </a></li>
-                                                    <li><a href="elements.ftl">elements</a></li>
+                                                    <li><a href="/candidate">Candidates </a></li>
+                                                    <li><a href="/job_details">job details </a></li>
+                                                    <li><a href="/elements">elements</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.ftl">blog</a></li>
-                                                    <li><a href="single-blog.ftl">single-blog</a></li>
+                                                    <li><a href="/blog">blog</a></li>
+                                                    <li><a href="/single_blog">single-blog</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.ftl">Contact</a></li>
+                                            <li><a href="/contact">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -185,49 +185,49 @@
             <div class="row">
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_catagory">
-                        <a href="jobs.ftl"><h4>Design & Creative</h4></a>
+                        <a href="/jobs"><h4>Design & Creative</h4></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_catagory">
-                        <a href="jobs.ftl"><h4>Marketing</h4></a>
+                        <a href="/jobs"><h4>Marketing</h4></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_catagory">
-                        <a href="jobs.ftl"><h4>Telemarketing</h4></a>
+                        <a href="/jobs"><h4>Telemarketing</h4></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_catagory">
-                        <a href="jobs.ftl"><h4>Software & Web</h4></a>
+                        <a href="/jobs"><h4>Software & Web</h4></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_catagory">
-                        <a href="jobs.ftl"><h4>Administration</h4></a>
+                        <a href="/jobs"><h4>Administration</h4></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_catagory">
-                        <a href="jobs.ftl"><h4>Teaching & Education</h4></a>
+                        <a href="/jobs"><h4>Teaching & Education</h4></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_catagory">
-                        <a href="jobs.ftl"><h4>Engineering</h4></a>
+                        <a href="/jobs"><h4>Engineering</h4></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_catagory">
-                        <a href="jobs.ftl"><h4>Garments / Textile</h4></a>
+                        <a href="/jobs"><h4>Garments / Textile</h4></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
@@ -247,7 +247,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="brouse_job text-right">
-                        <a href="jobs.ftl" class="boxed-btn4">Browse More Job</a>
+                        <a href="/jobs" class="boxed-btn4">Browse More Job</a>
                     </div>
                 </div>
             </div>
@@ -260,7 +260,7 @@
                                     <img src="/img/svg_icon/1.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="job_details.ftl"><h4>Software Engineer</h4></a>
+                                    <a href="/job_details"><h4>Software Engineer</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i> California, USA</p>
@@ -274,7 +274,7 @@
                             <div class="jobs_right">
                                 <div class="apply_now">
                                     <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.ftl" class="boxed-btn3">Apply Now</a>
+                                    <a href="/job_details" class="boxed-btn3">Apply Now</a>
                                 </div>
                                 <div class="date">
                                     <p>Date line: 31 Jan 2020</p>
@@ -289,7 +289,7 @@
                                     <img src="/img/svg_icon/2.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="job_details.ftl"><h4>Digital Marketer</h4></a>
+                                    <a href="/job_details"><h4>Digital Marketer</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i> California, USA</p>
@@ -303,7 +303,7 @@
                             <div class="jobs_right">
                                 <div class="apply_now">
                                     <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.ftl" class="boxed-btn3">Apply Now</a>
+                                    <a href="/job_details" class="boxed-btn3">Apply Now</a>
                                 </div>
                                 <div class="date">
                                     <p>Date line: 31 Jan 2020</p>
@@ -318,7 +318,7 @@
                                     <img src="/img/svg_icon/3.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="job_details.ftl"><h4>Wordpress Developer</h4></a>
+                                    <a href="/job_details"><h4>Wordpress Developer</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i> California, USA</p>
@@ -332,7 +332,7 @@
                             <div class="jobs_right">
                                 <div class="apply_now">
                                     <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.ftl" class="boxed-btn3">Apply Now</a>
+                                    <a href="/job_details" class="boxed-btn3">Apply Now</a>
                                 </div>
                                 <div class="date">
                                     <p>Date line: 31 Jan 2020</p>
@@ -347,7 +347,7 @@
                                     <img src="/img/svg_icon/4.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="job_details.ftl"><h4>Visual Designer</h4></a>
+                                    <a href="/job_details"><h4>Visual Designer</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i> California, USA</p>
@@ -361,7 +361,7 @@
                             <div class="jobs_right">
                                 <div class="apply_now">
                                     <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.ftl" class="boxed-btn3">Apply Now</a>
+                                    <a href="/job_details" class="boxed-btn3">Apply Now</a>
                                 </div>
                                 <div class="date">
                                     <p>Date line: 31 Jan 2020</p>
@@ -376,7 +376,7 @@
                                     <img src="/img/svg_icon/5.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="job_details.ftl"><h4>Software Engineer</h4></a>
+                                    <a href="/job_details"><h4>Software Engineer</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i> California, USA</p>
@@ -390,7 +390,7 @@
                             <div class="jobs_right">
                                 <div class="apply_now">
                                     <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.ftl" class="boxed-btn3">Apply Now</a>
+                                    <a href="/job_details" class="boxed-btn3">Apply Now</a>
                                 </div>
                                 <div class="date">
                                     <p>Date line: 31 Jan 2020</p>
@@ -405,7 +405,7 @@
                                     <img src="/img/svg_icon/1.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="job_details.ftl"><h4>Creative Designer</h4></a>
+                                    <a href="/job_details"><h4>Creative Designer</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i> California, USA</p>
@@ -419,7 +419,7 @@
                             <div class="jobs_right">
                                 <div class="apply_now">
                                     <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="job_details.ftl" class="boxed-btn3">Apply Now</a>
+                                    <a href="/job_details" class="boxed-btn3">Apply Now</a>
                                 </div>
                                 <div class="date">
                                     <p>Date line: 31 Jan 2020</p>
@@ -554,7 +554,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="brouse_job text-right">
-                        <a href="jobs.ftl" class="boxed-btn4">Browse More Job</a>
+                        <a href="/jobs" class="boxed-btn4">Browse More Job</a>
                     </div>
                 </div>
             </div>
@@ -564,7 +564,7 @@
                         <div class="thumb">
                             <img src="/img/svg_icon/5.svg" alt="">
                         </div>
-                        <a href="jobs.ftl"><h3>Snack Studio</h3></a>
+                        <a href="/jobs"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
@@ -573,7 +573,7 @@
                         <div class="thumb">
                             <img src="/img/svg_icon/4.svg" alt="">
                         </div>
-                        <a href="jobs.ftl"><h3>Snack Studio</h3></a>
+                        <a href="/jobs"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
@@ -582,7 +582,7 @@
                         <div class="thumb">
                             <img src="/img/svg_icon/3.svg" alt="">
                         </div>
-                        <a href="jobs.ftl"><h3>Snack Studio</h3></a>
+                        <a href="/jobs"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
@@ -591,7 +591,7 @@
                         <div class="thumb">
                             <img src="/img/svg_icon/1.svg" alt="">
                         </div>
-                        <a href="jobs.ftl"><h3>Snack Studio</h3></a>
+                        <a href="/jobs"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
                     </div>
                 </div>
@@ -787,11 +787,6 @@
                 <div class="footer_border"></div>
                 <div class="row">
                     <div class="col-xl-12">
-                        <p class="copy_right text-center">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
                     </div>
                 </div>
             </div>

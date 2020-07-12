@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
+    @GetMapping("/")
+    public String getMain(){
+        return "redirect:/signIn";
+    }
+
     @GetMapping("/elements")
     public String getElements(){
         return "elements";
@@ -41,7 +46,7 @@ public class MainController {
         return "jobs";
     }
 
-    @GetMapping("/single-blog")
+    @GetMapping("/single_blog")
     public String getSingleBlog(){
         return "single-blog";
     }

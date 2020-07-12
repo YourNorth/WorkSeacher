@@ -40,7 +40,7 @@
                       <div class="row align-items-center">
                           <div class="col-xl-3 col-lg-2">
                               <div class="logo">
-                                  <a href="index.ftl">
+                                  <a href="/index">
                                       <img src="/img/logo.png" alt="">
                                   </a>
                               </div>
@@ -49,22 +49,22 @@
                               <div class="main-menu  d-none d-lg-block">
                                   <nav>
                                       <ul id="navigation">
-                                          <li><a href="index.ftl">home</a></li>
-                                          <li><a href="jobs.ftl">Browse Job</a></li>
+                                          <li><a href="/index">home</a></li>
+                                          <li><a href="/jobs">Browse Job</a></li>
                                           <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                               <ul class="submenu">
-                                                  <li><a href="candidate.ftl">Candidates </a></li>
-                                                  <li><a href="job_details.ftl">job details </a></li>
-                                                  <li><a href="elements.ftl">elements</a></li>
+                                                  <li><a href="/candidate">Candidates </a></li>
+                                                  <li><a href="/job_details">job details </a></li>
+                                                  <li><a href="/elements">elements</a></li>
                                               </ul>
                                           </li>
                                           <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                               <ul class="submenu">
                                                   <li><a href="blog.ftl">blog</a></li>
-                                                  <li><a href="single-blog.ftl">single-blog</a></li>
+                                                  <li><a href="/single_blog">single-blog</a></li>
                                               </ul>
                                           </li>
-                                          <li><a href="contact.ftl">Contact</a></li>
+                                          <li><a href="/contact">Contact</a></li>
                                       </ul>
                                   </nav>
                               </div>
@@ -399,7 +399,7 @@
                      <div class="media post_item">
                         <img src="/img/post/post_1.png" alt="post">
                         <div class="media-body">
-                           <a href="single-blog.ftl">
+                           <a href="/single_blog">
                               <h3>From life was you fish...</h3>
                            </a>
                            <p>January 12, 2019</p>
@@ -408,7 +408,7 @@
                      <div class="media post_item">
                         <img src="/img/post/post_2.png" alt="post">
                         <div class="media-body">
-                           <a href="single-blog.ftl">
+                           <a href="/single_blog">
                               <h3>The Amazing Hubble</h3>
                            </a>
                            <p>02 Hours ago</p>
@@ -417,7 +417,7 @@
                      <div class="media post_item">
                         <img src="/img/post/post_3.png" alt="post">
                         <div class="media-body">
-                           <a href="single-blog.ftl">
+                           <a href="/single_blog">
                               <h3>Astronomy Or Astrology</h3>
                            </a>
                            <p>03 Hours ago</p>
@@ -426,7 +426,7 @@
                      <div class="media post_item">
                         <img src="/img/post/post_4.png" alt="post">
                         <div class="media-body">
-                           <a href="single-blog.ftl">
+                           <a href="/single_blog">
                               <h3>Asteroids telescope</h3>
                            </a>
                            <p>01 Hours ago</p>
@@ -607,11 +607,7 @@
               <div class="footer_border"></div>
               <div class="row">
                   <div class="col-xl-12">
-                      <p class="copy_right text-center">
-                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                      </p>
+
                   </div>
               </div>
           </div>
