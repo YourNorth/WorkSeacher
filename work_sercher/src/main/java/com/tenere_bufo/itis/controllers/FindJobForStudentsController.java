@@ -28,7 +28,9 @@ public class FindJobForStudentsController {
     }
 
     @PostMapping("/jobs")
-    public String findJobsForStudents(Company company){
+    public String findJobsForStudents(Company company, Map<String, Object> model){
+        List<Company> companies = companyRepository.findAll();
+        model.put("companies", companies);
         System.out.println(company);
         return "jobs";
     }

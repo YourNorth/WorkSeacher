@@ -34,6 +34,9 @@ public class Company extends BaseEntity{
     @Column(name = "gender")
     private String gender;
 
+    @Column(name = "link_img")
+    private String link_img;
+
     @OneToMany
     private Set<Vacancy> vacancies;
 }
