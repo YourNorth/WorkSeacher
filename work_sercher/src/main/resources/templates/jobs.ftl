@@ -139,6 +139,7 @@
                                                 <option data-display="Category">Category</option>
                                                 <option value="Java Developer">Java Developer</option>
                                                 <option value="Python Developer">Python Developer</option>
+                                                <option value="PHP Developer">PHP Developer</option>
                                             </select>
                                         </div>
                                     </div>
@@ -149,7 +150,7 @@
                                                 <option value="Not experience">Not experience</option>
                                                 <option value="Less 1 year">Less 1 year</option>
                                                 <option value="More 1 year">More 1 year</option>
-                                                <option value="More 3 year">More 3 year</option>
+                                                <option value="More 3 years">More 3 years</option>
                                             </select>
                                         </div>
                                     </div>

@@ -43,17 +43,6 @@ public class MainController {
         return "job_details";
     }
 
-    @GetMapping("/jobs")
-    public String getJobs(){
-        return "jobs";
-    }
-
-    @PostMapping("/jobs")
-    public String findJobsForStudents(Company company){
-        System.out.println(company);
-        return "jobs";
-    }
-
     @GetMapping("/single_blog")
     public String getSingleBlog(){
         return "single-blog";
