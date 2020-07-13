@@ -219,6 +219,7 @@
 
                     <div class="job_lists m-0">
                         <div class="row">
+                            <#list companies as company>
                             <div class="col-lg-12 col-md-12">
                                 <div class="single_jobs white-bg d-flex justify-content-between">
                                     <div class="jobs_left d-flex align-items-center">
@@ -226,7 +227,7 @@
                                             <img src="/img/svg_icon/1.svg" alt="">
                                         </div>
                                         <div class="jobs_conetent">
-                                            <a href="/job_details"><h4>Software Engineer</h4></a>
+                                            <a href="/job_details"><h4>${company.name}</h4></a>
                                             <div class="links_locat d-flex align-items-center">
                                                 <div class="location">
                                                     <p> <i class="fa fa-map-marker"></i> California, USA</p>
@@ -248,6 +249,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <#else>
+                                No companies
+                            </#list>
                             <div class="col-lg-12 col-md-12">
                                 <div class="single_jobs white-bg d-flex justify-content-between">
                                     <div class="jobs_left d-flex align-items-center">
