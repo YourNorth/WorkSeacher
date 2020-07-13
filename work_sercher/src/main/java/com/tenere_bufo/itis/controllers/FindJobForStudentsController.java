@@ -71,6 +71,11 @@ public class FindJobForStudentsController {
                     .equalsIgnoreCase(company.getGender()))
                     .collect(Collectors.toList());
         }
+//        if (!company.getAmount().equals("$750 - $24600/ Year")){
+//            String amount1 = company.getAmount().matches()
+//            String amoount2 = company.getAmount().substring(8, )
+//            companies = companies.stream().filter(s -> Integer.valueOf(s.getAmount().substring(1)) > )
+//        }
         return companies;
     }
 }

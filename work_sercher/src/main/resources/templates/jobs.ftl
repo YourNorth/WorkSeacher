@@ -188,7 +188,7 @@
                             <label for="amount">Salary:</label>
                             <div id="slider-range"></div>
                             <p>
-                                <input type="text" id="amount" readonly style="border:0; color:#7A838B; font-size: 14px; font-weight:400;">
+                                <input type="text" id="amount" name="amount" readonly style="border:0; color:#7A838B; font-size: 14px; font-weight:400;">
                             </p>
                         </div>
                         <div class="reset_btn">
