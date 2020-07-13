@@ -156,7 +156,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select id="job_type" name="job_type" class="wide">
+                                            <select id="jobType" name="jobType" class="wide">
                                                 <option data-display="Job type">Job type</option>
                                                 <option value="Full time">Full time</option>
                                                 <option value="Part time">Part time</option>
@@ -194,6 +194,12 @@
                         <div class="reset_btn">
                             <button  class="boxed-btn3 w-100" type="submit">Enter</button>
                         </div>
+                        <p></p>
+                        <form action="/jobs" method="get">
+                        <div class="reset_btn">
+                            <button  class="boxed-btn3 w-100" type="submit">Show all</button>
+                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -233,7 +239,7 @@
                                                     <p> <i class="fa fa-map-marker"></i>${company.location}</p>
                                                 </div>
                                                 <div class="location">
-                                                    <p> <i class="fa fa-clock-o"></i>${company.job_type}</p>
+                                                    <p> <i class="fa fa-clock-o"></i>${company.jobType}</p>
                                                 </div>
                                             </div>
                                         </div>

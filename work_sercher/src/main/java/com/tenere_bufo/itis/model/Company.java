@@ -25,8 +25,8 @@ public class Company extends BaseEntity{
     @Column(name = "experience")
     private String experience;
 
-    @Column(name = "job_type")
-    private String job_type;
+    @Column(name = "jobType")
+    private String jobType;
 
     @Column(name = "qualification")
     private String qualification;
