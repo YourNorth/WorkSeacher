@@ -16,6 +16,24 @@ public class Company extends BaseEntity{
     @Column(name = "name")
     private String name;
 
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "experience")
+    private String experience;
+
+    @Column(name = "job_type")
+    private String job_type;
+
+    @Column(name = "qualification")
+    private String qualification;
+
+    @Column(name = "gender")
+    private String gender;
+
     @OneToMany
     private Set<Vacancy> vacancies;
 }

@@ -109,6 +109,7 @@
     <!--/ bradcam_area  -->
 
     <!-- job_listing_area_start  -->
+    <form action="/jobs" method="post">
     <div class="job_listing_area plus_padding">
         <div class="container">
             <div class="row">
@@ -116,64 +117,66 @@
                     <div class="job_filter white-bg">
                         <div class="form_inner white-bg">
                             <h3>Filter</h3>
-                            <form action="#">
+                            <form>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <input type="text" placeholder="Search keyword">
+                                            <input type="text" id="name" name="name" placeholder="Search name">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select class="wide">
+                                            <select id="location" name="location" class="wide">
                                                 <option data-display="Location">Location</option>
-                                                <option value="1">Rangpur</option>
-                                                <option value="2">Dhaka </option>
+                                                <option value="California">California</option>
+                                                <option value="Moscow">Moscow </option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select class="wide">
+                                            <select id="category" name="category" class="wide">
                                                 <option data-display="Category">Category</option>
-                                                <option value="1">Category 1</option>
-                                                <option value="2">Category 2 </option>
+                                                <option value="Java Developer">Java Developer</option>
+                                                <option value="Python Developer">Python Developer</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select class="wide">
+                                            <select class="wide" id="experience" name="experience">
                                                 <option data-display="Experience">Experience</option>
-                                                <option value="1">Experience 1</option>
-                                                <option value="2">Experience 2 </option>
+                                                <option value="Not experience">Not experience</option>
+                                                <option value="Less 1 year">Less 1 year</option>
+                                                <option value="More 1 year">More 1 year</option>
+                                                <option value="More 3 year">More 3 year</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select class="wide">
+                                            <select id="job_type" name="job_type" class="wide">
                                                 <option data-display="Job type">Job type</option>
-                                                <option value="1">full time 1</option>
-                                                <option value="2">part time 2 </option>
+                                                <option value="Full time">Full time</option>
+                                                <option value="Part time">Part time</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select class="wide">
+                                            <select id="qualification" name="qualification" class="wide">
                                                 <option data-display="Qualification">Qualification</option>
-                                                <option value="1">Qualification 1</option>
-                                                <option value="2">Qualification 2</option>
+                                                <option value="Programmer">Programmer</option>
+                                                <option value="Tester">Tester</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select class="wide">
+                                            <select id="gender" name="gender" class="wide">
                                                 <option data-display="Gender">Gender</option>
-                                                <option value="1">male</option>
-                                                <option value="2">female</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
                                             </select>
                                         </div>
                                     </div>
@@ -181,14 +184,14 @@
                             </form>
                         </div>
                         <div class="range_wrap">
-                            <label for="amount">Price range:</label>
+                            <label for="amount">Salary:</label>
                             <div id="slider-range"></div>
                             <p>
                                 <input type="text" id="amount" readonly style="border:0; color:#7A838B; font-size: 14px; font-weight:400;">
                             </p>
                         </div>
                         <div class="reset_btn">
-                            <button  class="boxed-btn3 w-100" type="submit">Reset</button>
+                            <button  class="boxed-btn3 w-100" type="submit">Enter</button>
                         </div>
                     </div>
                 </div>
@@ -408,6 +411,7 @@
             </div>
         </div>
     </div>
+    </form>
     <!-- job_listing_area_end  -->
 
     <!-- footer start -->
