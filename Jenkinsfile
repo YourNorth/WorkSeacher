@@ -12,4 +12,14 @@ pipeline {
             }
         }
     }
+    stage('Test') { 
+            steps {
+                sh 'mvn -f ./work_sercher/pom.xmlx test' 
+            }
+            post {
+                always {
+                    junit 'work_sercher/target/surefire-reports/*.xml' 
+                }
+            }
+        }
 }
