@@ -247,7 +247,7 @@
                                     <div class="jobs_right">
                                         <div class="apply_now">
                                             <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>
-                                            <a href="/job_details" class="boxed-btn3">Apply Now</a>
+                                            <a href="/company/${company.name}" class="boxed-btn3">Apply Now</a>
                                         </div>
                                         <div class="date">
                                             <p>Date line: 31 Jan 2020</p>

@@ -140,4 +140,9 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findByToken(String token) {
         return userRepository.findByToken(token);
     }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
 }

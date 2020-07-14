@@ -28,4 +28,5 @@ public interface UserService {
     void updateStatus(User user);
 
     Optional<User> findByToken(String token);
+    Optional<User> findById(Long id);
 }

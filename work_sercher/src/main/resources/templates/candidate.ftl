@@ -190,7 +190,7 @@
                         <div class="thumb">
                             <img src="${user.link_img}" alt="">
                         </div>
-                        <a href="#"><h4>${user.firstName} ${user.lastName}</h4></a>
+                        <a href="/candidate/${user.id}"><h4>${user.firstName} ${user.lastName}</h4></a>
                         <p>${user.general_skill}</p>
                     </div>
                 </div>
