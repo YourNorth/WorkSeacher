@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "company")
+@Table(name = "companies")
 public class Company extends BaseEntity{
 
     @Column(name = "name")
