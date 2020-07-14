@@ -121,7 +121,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <input type="text" id="name" name="name" placeholder="Search name">
+                                            <input type="text" autocomplete="off" id="name" name="name" placeholder="Search name">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -192,7 +192,7 @@
                             </p>
                         </div>
                         <div class="reset_btn">
-                            <button  class="boxed-btn3 w-100" type="submit">Enter</button>
+                            <button  class="boxed-btn3 w-100" type="submit">Find job</button>
                         </div>
                         <p></p>
                         <form action="/jobs" method="get">
