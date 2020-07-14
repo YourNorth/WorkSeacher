@@ -23,7 +23,9 @@ public class FindCandidateForEmployerController {
 
     @GetMapping("/candidate")
     public String getCandidate(Map<String, Object> model){
-        List<User> users = userService.findAll();
+        List<User> users = userService.findAll()
+                .stream().filter(s -> s.getDescription() != null)
+                .collect(Collectors.toList());
         model.put("users", users);
         return "candidate";
     }
