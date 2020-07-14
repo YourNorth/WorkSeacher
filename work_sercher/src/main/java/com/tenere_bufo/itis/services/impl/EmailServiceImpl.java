@@ -33,7 +33,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public synchronized void sendConfirmation(String toEmail, String token) {
-        if (point == senders.length - 1){
+        if (point == senders.length - 1) {
             point = 0;
         }
         Properties props;

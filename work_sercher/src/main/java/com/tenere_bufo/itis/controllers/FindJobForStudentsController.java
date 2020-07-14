@@ -3,6 +3,7 @@ package com.tenere_bufo.itis.controllers;
 import com.tenere_bufo.itis.model.Company;
 import com.tenere_bufo.itis.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ public class FindJobForStudentsController {
         this.companyRepository = companyRepository;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/jobs")
     public String getJobs(Map<String, Object> model) {
         List<Company> companies = companyRepository.findAll();
@@ -28,6 +30,7 @@ public class FindJobForStudentsController {
         return "jobs";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/jobs")
     public String findJobsForStudents(Company company, Map<String, Object> model) {
         model.put("companies", sortParameters(company));
@@ -46,27 +49,27 @@ public class FindJobForStudentsController {
             companies = companies.stream().filter(s -> s.getLocation().equalsIgnoreCase(company.getLocation()))
                     .collect(Collectors.toList());
         }
-        if (!company.getCategory().equals("Category")){
+        if (!company.getCategory().equals("Category")) {
             companies = companies.stream().filter(s -> s.getCategory()
                     .equalsIgnoreCase(company.getCategory()))
                     .collect(Collectors.toList());
         }
-        if (!company.getExperience().equals("Experience")){
+        if (!company.getExperience().equals("Experience")) {
             companies = companies.stream().filter(s -> s.getExperience()
                     .equalsIgnoreCase(company.getExperience()))
                     .collect(Collectors.toList());
         }
-        if (!company.getJobType().equals("Job type")){
+        if (!company.getJobType().equals("Job type")) {
             companies = companies.stream().filter(s -> s.getJobType()
                     .equalsIgnoreCase(company.getJobType()))
                     .collect(Collectors.toList());
         }
-        if (!company.getQualification().equals("Qualification")){
+        if (!company.getQualification().equals("Qualification")) {
             companies = companies.stream().filter(s -> s.getQualification()
                     .equalsIgnoreCase(company.getQualification()))
                     .collect(Collectors.toList());
         }
-        if (!company.getGender().equals("Gender")){
+        if (!company.getGender().equals("Gender")) {
             companies = companies.stream().filter(s -> s.getGender()
                     .equalsIgnoreCase(company.getGender()))
                     .collect(Collectors.toList());
