@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests -f ./work_sercher/pom.xml -Pdev clean package'
+                sh 'mvn -B -DskipTests -f ./work_sercher/pom.xml -Prelease clean package'
             }
         }
         stage('Test') { 
             steps {
-                sh 'mvn -f ./work_sercher/pom.xml -Pdev test' 
+                sh 'mvn -f ./work_sercher/pom.xml -Prelease test' 
             }
             post {
                 always {
