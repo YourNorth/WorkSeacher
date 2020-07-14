@@ -1,5 +1,3 @@
-<#import "/spring.ftl" as spring/>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,21 +21,19 @@
 
 <body>
 <div class="login-dark">
-    <form method="post" action="/signIn" autocomplete="off" id="form">
+    <form method="post" autocomplete="off" id="form">
         <h2 class="sr-only">Login Form</h2>
         <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-        <div class="form-group"><@spring.formInput "user.email" "" "email"/>
-            <#--<input style="color:yellow" class="form-control" type="email" name="email" id="email"
-                                       placeholder="Email" required="required" max="30">--></div>
-        <div class="form-group"><@spring.formInput "user.password" "" "password"/>
-            <#--<input style="color: yellow" class="form-control" type="password" name="password"
+        <div class="form-group"><input style="color:yellow" class="form-control" type="email" name="email" id="email"
+                                       placeholder="Email" required="required" max="30"></div>
+        <div class="form-group"><input style="color: yellow" class="form-control" type="password" name="password"
                                        id="password" placeholder="Password" required="required"
-                                       min="6" max="30">-->
+                                       min="6" max="30">
         </div>
         <div class="form-group">
-            <#--<p>
+            <p>
             <div data-theme="dark" style="transform:scale(0.8); transform-origin:0;" class="g-recaptcha"
-                 data-sitekey="6LcIde8UAAAAAAIbECHdzJ1GhxNKZDyqAXCP95zy"></div></p>-->
+                 data-sitekey="6LcIde8UAAAAAAIbECHdzJ1GhxNKZDyqAXCP95zy"></div></p>
             <button class="btn btn-primary btn-block" type="submit" onclick="return validateForm()">Log In</button>
         </div>
         <a href="${rc.getContextPath()}/signUp" class="forgot">You aren't registered? Register here&nbsp;<br></a>

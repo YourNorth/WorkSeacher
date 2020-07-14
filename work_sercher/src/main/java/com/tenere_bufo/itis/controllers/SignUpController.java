@@ -9,7 +9,6 @@ import com.tenere_bufo.itis.utils.UserValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -44,14 +43,12 @@ public class SignUpController {
         this.restTemplate = restTemplate;
     }
 
-    @PreAuthorize("permitAll()")
     @GetMapping
     public String getSignUp(ModelMap map) {
         Attributes.addSuccessAttributes(map, "You have successfully logged in!");
         return "signUp";
     }
 
-    @PreAuthorize("permitAll()")
     @PostMapping
     public String signUp(User user, BindingResult result, ModelMap model,
                          @RequestParam("g-recaptcha-response") String captchaResponse) {
@@ -70,9 +67,9 @@ public class SignUpController {
             userService.register(user, captchaResponse);
             emailService.sendConfirmation(user.getEmail(), user.getToken());
             log.info("User registered: " + user.getEmail());
-        } else {
+        }else{
             Attributes.addErrorAttributes(model, error);
         }
-        return "signUp";
+        return "/signUp";
     }
 }
