@@ -40,7 +40,6 @@ public class FindJobForStudentsController {
     @PostMapping("/jobs")
     public String findJobsForStudents(Company company, Map<String, Object> model) {
         model.put("companies", sortByParameters(company));
-        System.out.println(company);
         return "jobs";
     }
 

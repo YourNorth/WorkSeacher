@@ -34,7 +34,6 @@ public class FindCandidateForEmployerController {
         //User(age=null, firstName=, lastName=, email=null, password=null, description=null, country=, city=, gender=Gender,
         // token=null, general_skill=, education=null, native_language=, link_img=null, roles=null, skills=null)
         model.put("users", sortByParameters(user));
-        System.out.println(user);
         return "candidate";
     }
 
@@ -70,22 +69,47 @@ public class FindCandidateForEmployerController {
     }
 
     private List<User> sortByCountry(User user, List<User> users) {
+        if (!user.getCountry().equals("")){
+            users = users.stream().filter(s -> s.getCountry()
+                    .equalsIgnoreCase(user.getCountry()))
+                    .collect(Collectors.toList());
+        }
         return users;
     }
 
     private List<User> sortByCity(User user, List<User> users) {
+        if (!user.getCity().equals("")){
+            users = users.stream().filter(s -> s.getCity()
+                    .equalsIgnoreCase(user.getCity()))
+                    .collect(Collectors.toList());
+        }
         return users;
     }
 
     private List<User> sortByGeneralSkill(User user, List<User> users) {
+        if (!user.getGeneral_skill().equals("")){
+            users = users.stream().filter(s -> s.getGeneral_skill()
+                    .equalsIgnoreCase(user.getGeneral_skill()))
+                    .collect(Collectors.toList());
+        }
         return users;
     }
 
     private List<User> sortByNativeLanguage(User user, List<User> users) {
+        if (!user.getNative_language().equals("")){
+            users = users.stream().filter(s -> s.getNative_language()
+                    .equalsIgnoreCase(user.getNative_language()))
+                    .collect(Collectors.toList());
+        }
         return users;
     }
 
     private List<User> sortByGender(User user, List<User> users) {
+        if (!user.getGender().equals("Gender")){
+            users = users.stream().filter(s -> s.getGender()
+                    .equalsIgnoreCase(user.getGender()))
+                    .collect(Collectors.toList());
+        }
         return users;
     }
 }

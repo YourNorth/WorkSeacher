@@ -194,6 +194,8 @@
                         <p>${user.general_skill}</p>
                     </div>
                 </div>
+                <#else>
+                    <p>No candidates</p>
                 </#list>
             </div>
             <div class="row">
