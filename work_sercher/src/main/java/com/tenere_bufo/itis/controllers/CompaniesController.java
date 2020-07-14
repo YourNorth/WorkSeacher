@@ -1,7 +1,7 @@
 package com.tenere_bufo.itis.controllers;
 
 import com.tenere_bufo.itis.model.Company;
-import com.tenere_bufo.itis.repository.CompanyRepository;
+import com.tenere_bufo.itis.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,16 +14,16 @@ import java.util.Optional;
 @Controller
 public class CompaniesController {
 
-    private final CompanyRepository companyRepository;
+    private final CompanyService companyService;
 
     @Autowired
-    public CompaniesController(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
+    public CompaniesController(CompanyService companyService) {
+        this.companyService = companyService;
     }
 
     @GetMapping("/company/{name}")
     public String getCompany(@PathVariable("name") String name, Map<String, Object> model){
-        Optional<Company> companies = companyRepository.findByName(name);
+        Optional<Company> companies = companyService.findByName(name);
         if (companies.isPresent()){
             model.put("companies", Collections.singletonList(companies.get()));
             return "job_details";

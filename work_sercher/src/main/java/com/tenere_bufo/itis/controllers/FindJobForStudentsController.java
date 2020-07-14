@@ -1,7 +1,7 @@
 package com.tenere_bufo.itis.controllers;
 
 import com.tenere_bufo.itis.model.Company;
-import com.tenere_bufo.itis.repository.CompanyRepository;
+import com.tenere_bufo.itis.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,16 +23,17 @@ public class FindJobForStudentsController {
     private final String DEFAULT_VALUE_FOR_GENDER = "Gender";
     private final String DEFAULT_VALUE_FOR_AMOUNT = "$750 - $24600/ Year";
 
-    private final CompanyRepository companyRepository;
+
+    private final CompanyService companyService;
 
     @Autowired
-    public FindJobForStudentsController(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
+    public FindJobForStudentsController(CompanyService companyService) {
+        this.companyService = companyService;
     }
 
     @GetMapping("/jobs")
     public String getJobs(Map<String, Object> model) {
-        List<Company> companies = companyRepository.findAll();
+        List<Company> companies = companyService.findAll();
         model.put("companies", companies);
         return "jobs";
     }
@@ -44,7 +45,7 @@ public class FindJobForStudentsController {
     }
 
     private List<Company> sortByParameters(Company company) {
-        List<Company> companies = companyRepository.findAll();
+        List<Company> companies = companyService.findAll();
         companies = sortByName(company, companies);
         companies = sortByLocation(company, companies);
         companies = sortByCategory(company, companies);

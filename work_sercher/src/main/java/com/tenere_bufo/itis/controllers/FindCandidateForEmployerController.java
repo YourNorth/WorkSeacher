@@ -1,8 +1,7 @@
 package com.tenere_bufo.itis.controllers;
 
-import com.tenere_bufo.itis.model.Company;
 import com.tenere_bufo.itis.model.User;
-import com.tenere_bufo.itis.repository.UserRepository;
+import com.tenere_bufo.itis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,30 +14,28 @@ import java.util.stream.Collectors;
 @Controller
 public class FindCandidateForEmployerController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
-    public FindCandidateForEmployerController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public FindCandidateForEmployerController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/candidate")
     public String getCandidate(Map<String, Object> model){
-        List<User> users = userRepository.findAll();
+        List<User> users = userService.findAll();
         model.put("users", users);
         return "candidate";
     }
 
     @PostMapping("/candidate")
     public String findCandidateForEmployer(User user, Map<String, Object> model){
-        //User(age=null, firstName=, lastName=, email=null, password=null, description=null, country=, city=, gender=Gender,
-        // token=null, general_skill=, education=null, native_language=, link_img=null, roles=null, skills=null)
         model.put("users", sortByParameters(user));
         return "candidate";
     }
 
     private List<User> sortByParameters(User user) {
-        List<User> users = userRepository.findAll();
+        List<User> users = userService.findAll();
         users = sortByFirstName(user, users);
         users = sortByLastName(user, users);
         users = sortByCountry(user, users);
