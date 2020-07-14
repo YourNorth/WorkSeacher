@@ -1,4 +1,4 @@
-INSERT INTO company (link_img, id, amount, created, status, updated, category, experience, gender, job_type, location, name, qualification)
+INSERT INTO companies (link_img, id, amount, created, status, updated, category, experience, gender, job_type, location, name, qualification)
 VALUES ('/img/svg_icon/1.svg', 1, '$800', now(), 'ACTIVE', now(), 'Java Developer', 'Less 1 year', 'Male', 'Full time', 'Moscow', 'Mother', 'Programmer'),
        ('/img/svg_icon/2.svg', 2, '$850', now(), 'ACTIVE', now(), 'Python Developer', 'More 1 year', 'Male', 'Part time', 'California', 'Passion', 'Tester'),
        ('/img/svg_icon/3.svg', 3, '$950', now(), 'ACTIVE', now(), 'PHP Developer', 'Less 1 year', 'Female', 'Full time', 'Moscow', 'Smile', 'Programmer'),
@@ -29,3 +29,4 @@ VALUES ('/img/svg_icon/1.svg', 1, '$800', now(), 'ACTIVE', now(), 'Java Develope
        ('/img/svg_icon/3.svg', 28, '$23000', now(), 'ACTIVE', now(), 'PHP Developer', 'Less 1 year', 'Female', 'Full time', 'Moscow', 'Renaissance', 'Programmer'),
        ('/img/svg_icon/4.svg', 29, '$24000', now(), 'ACTIVE', now(), 'Python Developer', 'More 1 year', 'Male', 'Part time', 'California', 'Cute', 'Tester'),
        ('/img/svg_icon/5.svg', 30, '$24500', now(), 'ACTIVE', now(), 'Java Developer', 'More 3 years', 'Female', 'Full time', 'Moscow', 'Cosy', 'Programmer');
+

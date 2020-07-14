@@ -107,119 +107,96 @@
     </div>
     <!--/ bradcam_area  -->
 
+    <!-- catagory_area -->
+    <form action="/candidate" method="post">
+    <div class="catagory_area">
+        <div class="container">
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="firstName" name="firstName" placeholder="First name">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="lastName" name="lastName" placeholder="Last name">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="country" name="country" placeholder="Country">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="city" name="city" placeholder="City">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="general_skill" name="general_skill" placeholder="General skill">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="native_language" name="native_language" placeholder="Native language">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <select id="gender" name="gender" class="wide" >
+                            <option data-display="Gender">Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <div class="reset_btn">
+                        <button  class="boxed-btn3 w-100" type="submit">Find candidate</button>
+                    </div>
+                    <p></p>
+                    <form action="/candidate" method="get">
+                    <div class="job_btn">
+                        <button  class="boxed-btn3 w-100" type="submit">Show all</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="popular_search d-flex align-items-center">
+                        <span>Popular Search:</span>
+                        <ul>
+                            <li><a href="#">Design & Creative</a></li>
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Administration</a></li>
+                            <li><a href="#">Teaching & Education</a></li>
+                            <li><a href="#">Engineering</a></li>
+                            <li><a href="#">Software & Web</a></li>
+                            <li><a href="#">Telemarketing</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!--/ catagory_area -->
+
     <!-- featured_candidates_area_start  -->
     <div class="featured_candidates_area candidate_page_padding">
         <div class="container">
             <div class="row">
+                <#list users as user>
                 <div class="col-md-6 col-lg-3">
                     <div class="single_candidates text-center">
                         <div class="thumb">
-                            <img src="/img/candiateds/1.png" alt="">
+                            <img src="${user.link_img}" alt="">
                         </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
+                        <a href="#"><h4>${user.firstName} ${user.lastName}</h4></a>
+                        <p>${user.general_skill}</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/2.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/3.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/4.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/5.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/6.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/7.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/8.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/9.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/10.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/3.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="/img/candiateds/4.png" alt="">
-                        </div>
-                        <a href="#"><h4>Markary Jondon</h4></a>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
+                <#else>
+                    <p>No candidates</p>
+                </#list>
             </div>
             <div class="row">
                 <div class="col-lg-12">

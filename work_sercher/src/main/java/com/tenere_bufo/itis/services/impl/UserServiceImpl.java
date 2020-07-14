@@ -10,8 +10,6 @@ import com.tenere_bufo.itis.utils.Attributes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,7 +78,6 @@ public class UserServiceImpl implements UserService {
         if (user.getStatus() == State.ACTIVE) {
             Attributes.addSuccessAttributes(model, "Success!");
             session.setAttribute("email", user.getEmail());
-            session.setAttribute("nickname", user.getNickname());
             log.info("User with this mail went to the site: " + user.getEmail());
             return true;
         }
@@ -106,7 +103,6 @@ public class UserServiceImpl implements UserService {
         if (user != null) {
             userRepository2.update(user);
             session.setAttribute("email", user.getEmail());
-            session.setAttribute("nickname", user.getNickname());
             log.info("A user with this mail has confirmed it: " + user.getEmail());
             return true;
         } else {
