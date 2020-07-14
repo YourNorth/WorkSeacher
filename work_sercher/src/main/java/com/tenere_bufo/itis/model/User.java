@@ -12,6 +12,9 @@ import java.util.Set;
 @Data
 public class User extends BaseEntity{
 
+    @Column(name = "age")
+    private Integer age;
+
     @Column(name = "firstName")
     private String firstName;
 
@@ -30,6 +33,9 @@ public class User extends BaseEntity{
     @Column(name = "country")
     private String country;
 
+    @Column(name = "city")
+    private String city;
+
     @Column(name = "gender")
     private String gender;
 
@@ -38,6 +44,12 @@ public class User extends BaseEntity{
 
     @Column(name = "general_skill")
     private String general_skill;
+
+    @Column(name = "education")
+    private String education;
+
+    @Column(name = "native_language")
+    private String native_language;
 
     @Column(name = "link_img")
     private String link_img;

@@ -113,16 +113,23 @@
             <div class="row cat_search">
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <input type="text" placeholder="Search keyword">
+                        <input type="text" placeholder="Search by firstname">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" placeholder="Search by lastName">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" placeholder="Search by country">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
                         <select class="wide" >
-                            <option data-display="Location">Location</option>
-                            <option value="1">Dhaka</option>
-                            <option value="2">Rangpur</option>
-                            <option value="4">Sylet</option>
+                            <option data-display="Gender">Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
                 </div>
@@ -138,7 +145,7 @@
                 </div>
                 <div class="col-lg-3 col-md-12">
                     <div class="job_btn">
-                        <a href="#" class="boxed-btn3">Find Job</a>
+                        <a href="#" class="boxed-btn3">Find candidate</a>
                     </div>
                 </div>
             </div>
