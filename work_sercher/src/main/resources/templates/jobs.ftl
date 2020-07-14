@@ -121,7 +121,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <input type="text" id="name" name="name" placeholder="Search name">
+                                            <input type="text" autocomplete="off" id="name" name="name" placeholder="Search name">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

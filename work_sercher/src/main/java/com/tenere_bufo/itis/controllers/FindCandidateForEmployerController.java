@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class FindCandidateForEmployerController {
@@ -30,24 +31,61 @@ public class FindCandidateForEmployerController {
 
     @PostMapping("/candidate")
     public String findCandidateForEmployer(User user, Map<String, Object> model){
-        //User(age=null, firstName=null, lastName=null, email=null, password=null,
-        // description=null, country=null, city=null, gender=null, token=null, general_skill=null,
-        // education=null, native_language=null, link_img=null, roles=null, skills=null)
+        //User(age=null, firstName=, lastName=, email=null, password=null, description=null, country=, city=, gender=Gender,
+        // token=null, general_skill=, education=null, native_language=, link_img=null, roles=null, skills=null)
         model.put("users", sortByParameters(user));
         System.out.println(user);
         return "candidate";
     }
 
     private List<User> sortByParameters(User user) {
-        List<User> companies = userRepository.findAll();
-//        companies = sortByName(company, companies);
-//        companies = sortByLocation(company, companies);
-//        companies = sortByCategory(company, companies);
-//        companies = sortByExperience(company, companies);
-//        companies = sortByJobType(company, companies);
-//        companies = sortByQualification(company, companies);
-//        companies = sortByGender(company, companies);
-//        companies = sortByAmount(company, companies);
-        return companies;
+        List<User> users = userRepository.findAll();
+        users = sortByFirstName(user, users);
+        users = sortByLastName(user, users);
+        users = sortByCountry(user, users);
+        users = sortByCity(user, users);
+        users = sortByGeneralSkill(user, users);
+        users = sortByNativeLanguage(user, users);
+        users = sortByNativeLanguage(user, users);
+        users = sortByGender(user, users);
+        return users;
+    }
+
+    private List<User> sortByFirstName(User user, List<User> users) {
+        if (!user.getFirstName().equals("")){
+            users = users.stream().filter(s -> s.getFirstName()
+                    .equalsIgnoreCase(user.getFirstName()))
+                    .collect(Collectors.toList());
+        }
+        return users;
+    }
+
+    private List<User> sortByLastName(User user, List<User> users) {
+        if (!user.getLastName().equals("")){
+            users = users.stream().filter(s -> s.getLastName()
+                    .equalsIgnoreCase(user.getLastName()))
+                    .collect(Collectors.toList());
+        }
+        return users;
+    }
+
+    private List<User> sortByCountry(User user, List<User> users) {
+        return users;
+    }
+
+    private List<User> sortByCity(User user, List<User> users) {
+        return users;
+    }
+
+    private List<User> sortByGeneralSkill(User user, List<User> users) {
+        return users;
+    }
+
+    private List<User> sortByNativeLanguage(User user, List<User> users) {
+        return users;
+    }
+
+    private List<User> sortByGender(User user, List<User> users) {
+        return users;
     }
 }

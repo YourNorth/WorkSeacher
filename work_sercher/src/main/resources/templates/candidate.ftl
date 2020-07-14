@@ -114,33 +114,33 @@
             <div class="row cat_search">
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <input type="text" placeholder="First name">
+                        <input type="text" autocomplete="off" id="firstName" name="firstName" placeholder="First name">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" placeholder="LastName">
+                        <input type="text" autocomplete="off" id="lastName" name="lastName" placeholder="Last name">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" placeholder="Country">
+                        <input type="text" autocomplete="off" id="country" name="country" placeholder="Country">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <input type="text" placeholder="City">
+                        <input type="text" autocomplete="off" id="city" name="city" placeholder="City">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" placeholder="General skill">
+                        <input type="text" autocomplete="off" id="general_skill" name="general_skill" placeholder="General skill">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" placeholder="Native language">
+                        <input type="text" autocomplete="off" id="native_language" name="native_language" placeholder="Native language">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <select class="wide" >
+                        <select id="gender" name="gender" class="wide" >
                             <option data-display="Gender">Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -154,7 +154,7 @@
                     <p></p>
                     <form action="/candidate" method="get">
                     <div class="job_btn">
-                        <a href="#" class="boxed-btn3">Show all</a>
+                        <button  class="boxed-btn3 w-100" type="submit">Show all</button>
                     </div>
                     </form>
                 </div>
