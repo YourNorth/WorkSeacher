@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     public void register(User user, String captchaResponse) {
         String hashPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashPassword);
-        user.setStatus(State.NOT_ACTIVE);
+        user.setStatus(State.ACTIVE);
         user.setToken(generateNewToken());
         add(user);
     }

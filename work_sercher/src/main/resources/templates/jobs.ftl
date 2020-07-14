@@ -233,7 +233,7 @@
                                             <img src="${company.link_img}" alt="">
                                         </div>
                                         <div class="jobs_conetent">
-                                            <a href="/job_details"><h4>${company.name}</h4></a>
+                                            <a href="/company/${company.name}"><h4>${company.name}</h4></a>
                                             <div class="links_locat d-flex align-items-center">
                                                 <div class="location">
                                                     <p> <i class="fa fa-map-marker"></i>${company.location}</p>

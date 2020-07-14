@@ -94,12 +94,13 @@
     <!-- header-end -->
 
     <!-- bradcam_area  -->
+    <#list companies as company>
     <div class="bradcam_area bradcam_bg_1">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Software Engineer</h3>
+                        <h3>${company.category}</h3>
                     </div>
                 </div>
             </div>
@@ -115,16 +116,16 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="/img/svg_icon/1.svg" alt="">
+                                    <img src="${company.link_img}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="#"><h4>Software Engineer</h4></a>
+                                    <a href="#"><h4>${company.name}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                            <p> <i class="fa fa-map-marker"></i>${company.location}</p>
                                         </div>
                                         <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                            <p> <i class="fa fa-clock-o"></i>${company.job_type}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -220,10 +221,13 @@
                         <div class="job_content">
                             <ul>
                                 <li>Published on: <span>12 Nov, 2019</span></li>
-                                <li>Vacancy: <span>2 Position</span></li>
-                                <li>Salary: <span>50k - 120k/y</span></li>
-                                <li>Location: <span>California, USA</span></li>
-                                <li>Job Nature: <span> Full-time</span></li>
+                                <li>Vacancy: <span> ${company.category}</span></li>
+                                <li>Salary: <span>${company.amount}</span></li>
+                                <li>Location: <span> ${company.location}</span></li>
+                                <li>Job Nature: <span> ${company.jobType}</span></li>
+                                <li>Experience: <span> ${company.experience}</span></li>
+                                <li>Gender: <span> ${company.gender}</span></li>
+                                <li>Qualification: <span> ${company.qualification}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -269,6 +273,7 @@
             </div>
         </div>
     </div>
+    </#list>
 
     <!-- footer start -->
     <footer class="footer">
