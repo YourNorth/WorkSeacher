@@ -192,7 +192,7 @@
                             </p>
                         </div>
                         <div class="reset_btn">
-                            <button  class="boxed-btn3 w-100" type="submit">Enter</button>
+                            <button  class="boxed-btn3 w-100" type="submit">Find job</button>
                         </div>
                         <p></p>
                         <form action="/jobs" method="get">

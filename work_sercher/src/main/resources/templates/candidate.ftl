@@ -108,20 +108,21 @@
     <!--/ bradcam_area  -->
 
     <!-- catagory_area -->
+    <form action="/candidate" method="post">
     <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <input type="text" placeholder="City">
+                        <input type="text" placeholder="First name">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" placeholder="General skill">
+                        <input type="text" placeholder="LastName">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" placeholder="Native language">
+                        <input type="text" placeholder="Country">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
@@ -147,13 +148,15 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12">
-                    <div class="job_btn">
-                        <a href="#" class="boxed-btn3">Find candidate</a>
+                    <div class="reset_btn">
+                        <button  class="boxed-btn3 w-100" type="submit">Find candidate</button>
                     </div>
                     <p></p>
+                    <form action="/candidate" method="get">
                     <div class="job_btn">
                         <a href="#" class="boxed-btn3">Show all</a>
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="row">
@@ -174,6 +177,7 @@
             </div>
         </div>
     </div>
+    </form>
     <!--/ catagory_area -->
 
     <!-- featured_candidates_area_start  -->
