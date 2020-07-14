@@ -125,7 +125,7 @@
                                             <p> <i class="fa fa-map-marker"></i>${company.location}</p>
                                         </div>
                                         <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i>${company.job_type}</p>
+                                            <p> <i class="fa fa-clock-o"></i>${company.jobType}</p>
                                         </div>
                                     </div>
                                 </div>

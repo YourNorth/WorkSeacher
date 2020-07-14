@@ -11,9 +11,8 @@ import java.io.IOException;
 
 @WebFilter(
         urlPatterns = {"/elements", "/blog", "/contact", "/index", "/job_details", "/single_blog", "/company/*", "/jobs",
-                "/candidate", "/candidate/*"}
+                "/candidate", "/candidate/*", "/"}
 )
-@Component
 public class MainFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
