@@ -13,18 +13,18 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class WorkSearcherApplication {
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public RestTemplate restTemplate(){
+    public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(WorkSearcherApplication.class, args);
-        DispatcherServlet dispatcherServlet = (DispatcherServlet)ctx.getBean("dispatcherServlet");
+        DispatcherServlet dispatcherServlet = (DispatcherServlet) ctx.getBean("dispatcherServlet");
         dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
     }
 }

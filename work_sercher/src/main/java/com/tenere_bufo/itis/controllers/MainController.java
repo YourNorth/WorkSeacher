@@ -1,50 +1,62 @@
 package com.tenere_bufo.itis.controllers;
 
 import com.tenere_bufo.itis.model.Company;
+import com.tenere_bufo.itis.model.User;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+@Slf4j
 @Controller
 public class MainController {
 
+    @PreAuthorize("permitAll()")
     @GetMapping("/")
-    public String getMain(){
-        return "redirect:/signIn";
+    public String getMain(Authentication authentication) {
+        log.info("getMain() returns " + authentication);
+        if(authentication!=null&&authentication.isAuthenticated()){
+            return "index";
+        }
+        return "redirect:signIn";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/elements")
-    public String getElements(){
+    public String getElements() {
         return "elements";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/blog")
-    public String getBlog(){
+    public String getBlog() {
         return "blog";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/candidate")
-    public String getCandidate(){
+    public String getCandidate() {
         return "candidate";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/contact")
-    public String getContact(){
+    public String getContact() {
         return "contact";
     }
 
-    @GetMapping("/index")
-    public String getIndex(){
-        return "index";
-    }
-
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/job_details")
-    public String getJobDetails(){
+    public String getJobDetails() {
         return "job_details";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/single_blog")
-    public String getSingleBlog(){
+    public String getSingleBlog() {
         return "single-blog";
     }
 }
