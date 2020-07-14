@@ -10,7 +10,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "skills")
-public class Skill extends BaseEntity{
+public class Skill extends BaseEntity {
 
     @Column(name = "name")
     private String name;

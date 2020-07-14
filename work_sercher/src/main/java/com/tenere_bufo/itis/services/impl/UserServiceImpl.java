@@ -1,6 +1,5 @@
 package com.tenere_bufo.itis.services.impl;
 
-import com.tenere_bufo.itis.dto.AuthenticationRequestDto;
 import com.tenere_bufo.itis.dto.CaptchaResponseDto;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
@@ -62,34 +61,35 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean signIn(AuthenticationRequestDto userForm, ModelMap model, HttpSession session, String captchaResponse) {
+    public boolean signIn(User userForm, ModelMap model, HttpSession session, String captchaResponse) {
         String url = String.format(CAPTCHA_URL, secret, captchaResponse);
         CaptchaResponseDto response = restTemplate.postForObject(url, Collections.emptyList(), CaptchaResponseDto.class);
         if (!Objects.requireNonNull(response).isSuccess()) {
             Attributes.addErrorAttributes(model, "Fill captcha!");
             return false;
         }
-        User user = find(userForm.getEmail()).orElse(null);
+        User user = userRepository.findByEmail(userForm.getEmail()).orElse(null);
         if (user == null || !passwordEncoder.matches(userForm.getPassword(), user.getPassword())) {
-            log.info("User with this email and password could not log in: " + userForm.getEmail() + " and " + userForm.getPassword());
+            String message = "User with this email and password could not log in: " + userForm.getEmail() + " and " + userForm.getPassword();
+            log.info(message);
             Attributes.addErrorAttributes(model, "Wrong login or password!");
             return false;
         }
-        if (user.getStatus() == State.ACTIVE){
+        if (user.getStatus() == State.ACTIVE) {
             Attributes.addSuccessAttributes(model, "Success!");
             session.setAttribute("email", user.getEmail());
-            log.info("User with this mail went to the site: " + userForm.getEmail());
+            log.info("User with this mail went to the site: " + user.getEmail());
             return true;
         }
-        if (user.getStatus() == State.NOT_ACTIVE){
+        if (user.getStatus() == State.NOT_ACTIVE) {
             Attributes.addErrorAttributes(model, "Your account is inactive since you did not confirm your mail!");
-            log.info("The user with this mail was not logged in as he did not confirm the mail: " + userForm.getEmail());
+            log.info("The user with this mail was not logged in as he did not confirm the mail: " + user.getEmail());
         }
-        if (user.getStatus() == State.BANNED){
+        if (user.getStatus() == State.BANNED) {
             Attributes.addErrorAttributes(model, "Your account has been banned!");
-            log.info("A user with this mail has not logged in as he is banned: " + userForm.getEmail());
+            log.info("A user with this mail has not logged in as he is banned: " + user.getEmail());
         }
-        if (user.getStatus() == State.DELETED){
+        if (user.getStatus() == State.DELETED) {
             Attributes.addErrorAttributes(model, "Your account has been deleted!");
             log.info("The user with this mail was not logged in as he was deleted: " + user.getEmail());
         }

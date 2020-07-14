@@ -3,6 +3,7 @@ package com.tenere_bufo.itis.controllers;
 import com.tenere_bufo.itis.model.Company;
 import com.tenere_bufo.itis.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,7 @@ public class FindJobForStudentsController {
         this.companyRepository = companyRepository;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/jobs")
     public String getJobs(Map<String, Object> model) {
         List<Company> companies = companyRepository.findAll();
@@ -37,6 +39,7 @@ public class FindJobForStudentsController {
         return "jobs";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/jobs")
     public String findJobsForStudents(Company company, Map<String, Object> model) {
         model.put("companies", sortByParameters(company));
