@@ -36,6 +36,12 @@ public class User extends BaseEntity{
     @Column(name = "token", length = 501)
     private String token;
 
+    @Column(name = "general_skill")
+    private String general_skill;
+
+    @Column(name = "link_img")
+    private String link_img;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
     joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
