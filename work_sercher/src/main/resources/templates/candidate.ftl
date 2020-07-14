@@ -113,15 +113,28 @@
             <div class="row cat_search">
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <input type="text" placeholder="Search by firstname">
+                        <input type="text" placeholder="City">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" placeholder="Search by lastName">
+                        <input type="text" placeholder="General skill">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" placeholder="Search by country">
+                        <input type="text" placeholder="Native language">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <input type="text" placeholder="City">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" placeholder="General skill">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" placeholder="Native language">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
@@ -133,19 +146,13 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <select class="wide">
-                            <option data-display="Category">Category</option>
-                            <option value="1">Category 1</option>
-                            <option value="2">Category 2</option>
-                            <option value="4">Category 3</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="col-lg-3 col-md-12">
                     <div class="job_btn">
                         <a href="#" class="boxed-btn3">Find candidate</a>
+                    </div>
+                    <p></p>
+                    <div class="job_btn">
+                        <a href="#" class="boxed-btn3">Show all</a>
                     </div>
                 </div>
             </div>
