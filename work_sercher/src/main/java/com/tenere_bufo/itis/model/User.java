@@ -12,9 +12,6 @@ import java.util.Set;
 @Data
 public class User extends BaseEntity{
 
-    @Column(name = "nickname")
-    private String nickname;
-
     @Column(name = "firstName")
     private String firstName;
 
@@ -43,6 +40,6 @@ public class User extends BaseEntity{
     @JoinTable(name = "user_skills",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "skill_id", referencedColumnName = "id")})
-    private Set<Role> skills;
+    private Set<Skill> skills;
 
 }

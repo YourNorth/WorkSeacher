@@ -78,7 +78,6 @@ public class UserServiceImpl implements UserService {
         if (user.getStatus() == State.ACTIVE){
             Attributes.addSuccessAttributes(model, "Success!");
             session.setAttribute("email", user.getEmail());
-            session.setAttribute("nickname", user.getNickname());
             log.info("User with this mail went to the site: " + userForm.getEmail());
             return true;
         }
@@ -104,7 +103,6 @@ public class UserServiceImpl implements UserService {
         if (user != null) {
             userRepository2.update(user);
             session.setAttribute("email", user.getEmail());
-            session.setAttribute("nickname", user.getNickname());
             log.info("A user with this mail has confirmed it: " + user.getEmail());
             return true;
         } else {
