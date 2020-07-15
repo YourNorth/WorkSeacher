@@ -25,6 +25,12 @@ public class MainFilter implements Filter {
             filterChain.doFilter(request, response);
             return;
         }
+        //For test!!!
+//        if (test.equals("/getSession")){
+//            HttpSession session1 = request.getSession();
+//            session1.setAttribute("email", "admin@gmail.com");
+//            request.getRequestDispatcher("/index").forward(request, response);
+//        }
         if (session == null || session.getAttribute("email") == null){
             request.getRequestDispatcher("/signIn").forward(request, response);
         }else{

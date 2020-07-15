@@ -21,11 +21,6 @@ public class MainController {
         return "contact";
     }
 
-    @GetMapping("/job_details")
-    public String getJobDetails(){
-        return "redirect:/signIn";
-    }
-
     @GetMapping("/single_blog")
     public String getSingleBlog(){
         return "single-blog";
