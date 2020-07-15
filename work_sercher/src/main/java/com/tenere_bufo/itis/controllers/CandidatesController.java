@@ -1,11 +1,13 @@
 package com.tenere_bufo.itis.controllers;
 
+import com.tenere_bufo.itis.model.FeedbackForEmployer;
 import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
 import java.util.Map;
@@ -29,5 +31,11 @@ public class CandidatesController {
             return "candidate_details";
         }
         return "candidate";
+    }
+
+    @PostMapping("/candidate/{id}")
+    public String toSendLetter(@PathVariable("id") Long id, FeedbackForEmployer feedback){
+        System.out.println(feedback);
+        return "redirect:/candidate/{id}";
     }
 }

@@ -9,16 +9,16 @@ import javax.persistence.Table;
 import java.io.File;
 
 @EqualsAndHashCode(callSuper = false)
-@Entity(name = "feedbackForCandidate")
+@Entity(name = "feedbackForEmployer")
 @Table
 @Data
 public class FeedbackForEmployer extends BaseEntity{
 
-    @Column(name = "user_id")
-    private Long user_id;
-
     @Column(name = "job_type")
     private Long job_id;
+
+    @Column(name = "user_id")
+    private Long user_id;
 
     @Column(name = "name")
     private String name;

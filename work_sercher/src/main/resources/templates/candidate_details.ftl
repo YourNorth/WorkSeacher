@@ -168,24 +168,25 @@
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
                         </div>
                     </div>
+                    <form action="/candidate/${user.id}" method="post">
                     <div class="apply_job_form white-bg">
                         <h4>Apply for candidate</h4>
                         <form action="#">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Your name">
+                                        <input type="text" id="name" name="name" placeholder="Your name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Email">
+                                        <input type="text" id="contact" name="contact" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Your company name">
-                                    </div>
+                                        <input type="text"  id="company_name" name="company_name" placeholder="Your company name">
+                                </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input-group">
@@ -193,15 +194,15 @@
                                             <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
                                             </button>
                                         </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                                        <div class="custom-file" id="file" name="file">
+                                            <input type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon03">
                                             <label class="custom-file-label" for="inputGroupFile03">Upload CV</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <textarea name="#" id="" cols="30" rows="10" placeholder="Coverletter"></textarea>
+                                        <textarea name="cover_letter" id="cover_letter" cols="30" rows="10" placeholder="Coverletter"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -212,6 +213,7 @@
                             </div>
                         </form>
                     </div>
+                    </form>
                 </div>
                 <div class="col-lg-4">
                     <div class="job_sumary">
