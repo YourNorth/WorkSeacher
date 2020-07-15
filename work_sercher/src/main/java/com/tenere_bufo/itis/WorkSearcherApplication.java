@@ -13,11 +13,6 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class WorkSearcherApplication {
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
