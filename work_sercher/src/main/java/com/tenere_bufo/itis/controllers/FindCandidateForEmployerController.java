@@ -37,7 +37,8 @@ public class FindCandidateForEmployerController {
     }
 
     private List<User> sortByParameters(User user) {
-        List<User> users = userService.findAll();
+        List<User> users = userService.findAll().stream().filter(s -> s.getDescription() != null)
+                .collect(Collectors.toList());
         users = sortByFirstName(user, users);
         users = sortByLastName(user, users);
         users = sortByCountry(user, users);
