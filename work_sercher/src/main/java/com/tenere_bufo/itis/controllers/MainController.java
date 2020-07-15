@@ -26,11 +26,6 @@ public class MainController {
         return "contact";
     }
 
-    @GetMapping("/index")
-    public String getIndex(){
-        return "index";
-    }
-
     @GetMapping("/job_details")
     public String getJobDetails(){
         return "job_details";

@@ -118,37 +118,37 @@
     <!-- slider_area_end -->
 
     <!-- catagory_area -->
+    <form action="/index" method="post">
     <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <input type="text" placeholder="Search keyword">
+                        <input type="text" placeholder="Search company name">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <select class="wide" >
+                        <select id="location" name="location" class="wide">
                             <option data-display="Location">Location</option>
-                            <option value="1">Dhaka</option>
-                            <option value="2">Rangpur</option>
-                            <option value="4">Sylet</option>
-                          </select>
+                            <option value="California">California</option>
+                            <option value="Moscow">Moscow </option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <select class="wide">
+                        <select id="category" name="category" class="wide">
                             <option data-display="Category">Category</option>
-                            <option value="1">Category 1</option>
-                            <option value="2">Category 2</option>
-                            <option value="4">Category 3</option>
-                          </select>
+                            <option value="Java Developer">Java Developer</option>
+                            <option value="Python Developer">Python Developer</option>
+                            <option value="PHP Developer">PHP Developer</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12">
                     <div class="job_btn">
-                        <a href="#" class="boxed-btn3">Find Job</a>
+                        <button  class="boxed-btn3 w-100" type="submit">Find job</button>
                     </div>
                 </div>
             </div>
@@ -170,6 +170,7 @@
             </div>
         </div>
     </div>
+    </form>
     <!--/ catagory_area -->
 
     <!-- popular_catagory_area_start  -->

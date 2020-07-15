@@ -36,7 +36,7 @@ public class SignInController {
     public String signIn(AuthenticationRequestDto authenticationRequestDto, ModelMap modelMap, HttpSession session,
                          @RequestParam("g-recaptcha-response") String captchaResponse) {
         if (userService.signIn(authenticationRequestDto, modelMap, session, captchaResponse)) {
-            return "index";
+            return "redirect:/index";
         }else{
             return "/signIn";
         }
