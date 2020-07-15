@@ -235,7 +235,7 @@
                             error += 'Name must be between 2 and 50 characters! \n';
                         }
                         if (company_name.value.length < 2 || company_name.value.length > 50) {
-                            error += 'Company_name must be between 2 and 50 characters! \n';
+                            error += 'Company name must be between 2 and 50 characters! \n';
                         }
                         if (error !== '') {
                             swal("Oops", error, "error");
