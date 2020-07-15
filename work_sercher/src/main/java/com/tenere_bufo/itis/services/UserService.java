@@ -13,8 +13,6 @@ import java.util.Optional;
 public interface UserService {
     void register(User user, String captchaResponse);
 
-    boolean signIn(AuthenticationRequestDto userForm, ModelMap modelMap, HttpSession session, String captchaResponse);
-
     boolean confirm(String token, ModelMap model, HttpSession session);
 
     List<User> findAll();

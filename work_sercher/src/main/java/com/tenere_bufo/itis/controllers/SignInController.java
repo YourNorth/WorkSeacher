@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.util.logging.LogManager;
 
 @Controller
-@RequestMapping("/signIn")
 public class SignInController {
 
     private final UserService userService;
@@ -25,20 +24,14 @@ public class SignInController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public String getSignIn(ModelMap modelMap){
+    @GetMapping("/signIn")
+    public String getSignIn(ModelMap modelMap, @RequestParam(value = "error", required = false) String error){
         LogManager.getLogManager().reset();
-        Attributes.addSuccessAttributes(modelMap,"You have successfully logged in!");
+        if (error != null){
+            Attributes.addErrorAttributes(modelMap,"Error, wrong login or password. Try again");
+        }
+
         return "signIn";
     }
 
-    @PostMapping
-    public String signIn(AuthenticationRequestDto authenticationRequestDto, ModelMap modelMap, HttpSession session,
-                         @RequestParam("g-recaptcha-response") String captchaResponse) {
-        if (userService.signIn(authenticationRequestDto, modelMap, session, captchaResponse)) {
-            return "redirect:/index";
-        }else{
-            return "/signIn";
-        }
-    }
 }

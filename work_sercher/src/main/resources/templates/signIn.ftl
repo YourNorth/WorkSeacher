@@ -13,7 +13,9 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
         function funOnLoad() {
-            swal('${title}', '${message}', '${category}');
+            <#if title?? && message?? && category?? >
+                swal('${title}', '${message}', '${category}');
+            </#if>
         }
         window.onload = funOnLoad;
     </script>
