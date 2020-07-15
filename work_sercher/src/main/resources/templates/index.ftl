@@ -262,13 +262,13 @@
                                     <img src="${company.link_img}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="/job_details"><h4>${company.name}</h4></a>
+                                    <a href="/company/${company.name}"><h4>${company.name}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i>${company.location}</p>
                                         </div>
                                         <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                            <p> <i class="fa fa-clock-o"></i> ${company.jobType}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -276,7 +276,7 @@
                             <div class="jobs_right">
                                 <div class="apply_now">
                                     <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                    <a href="/job_details" class="boxed-btn3">Apply Now</a>
+                                    <a href="/company/${company.name}" class="boxed-btn3">Apply Now</a>
                                 </div>
                                 <div class="date">
                                     <p>Date line: 31 Jan 2020</p>
