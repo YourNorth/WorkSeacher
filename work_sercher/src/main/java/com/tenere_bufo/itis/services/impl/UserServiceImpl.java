@@ -2,10 +2,14 @@ package com.tenere_bufo.itis.services.impl;
 
 import com.tenere_bufo.itis.dto.AuthenticationRequestDto;
 import com.tenere_bufo.itis.dto.CaptchaResponseDto;
+import com.tenere_bufo.itis.model.Role;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
+import com.tenere_bufo.itis.model.UserRole;
 import com.tenere_bufo.itis.repository.UserRepository;
 import com.tenere_bufo.itis.repository.UserRepository2;
+import com.tenere_bufo.itis.repository.UserRolesRepository;
+import com.tenere_bufo.itis.services.RolesService;
 import com.tenere_bufo.itis.services.UserService;
 import com.tenere_bufo.itis.utils.Attributes;
 import lombok.extern.slf4j.Slf4j;
@@ -32,13 +36,17 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final RestTemplate restTemplate;
     private final UserRepository2 userRepository2;
+    private final RolesService rolesService;
+    private final UserRolesRepository userRolesRepository;
 
     @Autowired
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, RestTemplate restTemplate, UserRepository2 userRepository2) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, RestTemplate restTemplate, UserRepository2 userRepository2, RolesService rolesService, UserRolesRepository userRolesRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.restTemplate = restTemplate;
         this.userRepository2 = userRepository2;
+        this.rolesService = rolesService;
+        this.userRolesRepository = userRolesRepository;
     }
 
     @Override
@@ -47,6 +55,8 @@ public class UserServiceImpl implements UserService {
         user.setPassword(hashPassword);
         user.setStatus(State.ACTIVE);
         user.setToken(generateNewToken());
+        user.setCreated(new Date());
+        user.setUpdated(new Date());
         add(user);
     }
 
