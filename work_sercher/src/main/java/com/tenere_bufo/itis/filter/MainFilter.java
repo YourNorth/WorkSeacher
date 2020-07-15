@@ -20,7 +20,6 @@ public class MainFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
         String test = request.getRequestURI();
-        System.out.println(test);
         if (test.equals("/signUp") || test.startsWith("/css") || test.startsWith("/img") ||
                 test.startsWith("/fonts") || test.startsWith("/js") || test.startsWith("/scss")){
             filterChain.doFilter(request, response);
