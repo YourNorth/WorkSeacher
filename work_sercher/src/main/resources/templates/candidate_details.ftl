@@ -11,6 +11,7 @@
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -207,7 +208,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="submit_btn">
-                                        <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
+                                        <button class="boxed-btn3 w-100" type="submit" onclick="return validateForm()">Apply Now</button>
                                     </div>
                                 </div>
                             </div>
@@ -215,6 +216,38 @@
                     </div>
                     </form>
                 </div>
+
+                <script>
+                    function validateForm() {
+                        let cover_letter = document.getElementById('cover_letter');
+                        let company_name = document.getElementById('company_name');
+                        let name = document.getElementById('name');
+                        let email = document.getElementById('contact');
+                        let error = '';
+                        let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+                        if (!email_regexp.test(email.value)) {
+                            error += 'Email is entered incorrectly! \n';
+                        }
+                        if (cover_letter.value.length < 6 || cover_letter.value.length > 254) {
+                            error += 'Coverletter must be between 6 and 254 characters! \n';
+                        }
+                        if (name.value.length < 2 || name.value.length > 50) {
+                            error += 'Name must be between 2 and 50 characters! \n';
+                        }
+                        if (company_name.value.length < 2 || company_name.value.length > 50) {
+                            error += 'Company_name must be between 2 and 50 characters! \n';
+                        }
+                        if (error !== '') {
+                            swal("Oops", error, "error");
+                            return false;
+                        } else {
+                            swal("Good job!", 'Ok', "success");
+                            let form = document.getElementById("form");
+                            form.submit();
+                        }
+                    }
+                </script>
+
                 <div class="col-lg-4">
                     <div class="job_sumary">
                         <div class="summery_header">
