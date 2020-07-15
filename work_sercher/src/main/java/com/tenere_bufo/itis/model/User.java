@@ -1,7 +1,6 @@
 package com.tenere_bufo.itis.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -10,6 +9,9 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User extends BaseEntity{
 
     @Column(name = "age")
@@ -59,11 +61,4 @@ public class User extends BaseEntity{
     joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
     inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Set<Role> roles;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_skills",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "skill_id", referencedColumnName = "id")})
-    private Set<Skill> skills;
-
 }

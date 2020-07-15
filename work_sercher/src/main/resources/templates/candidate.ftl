@@ -162,15 +162,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="popular_search d-flex align-items-center">
-                        <span>Popular Search:</span>
+                        <span>Key skills:</span>
                         <ul>
-                            <li><a href="#">Design & Creative</a></li>
-                            <li><a href="#">Marketing</a></li>
-                            <li><a href="#">Administration</a></li>
-                            <li><a href="#">Teaching & Education</a></li>
-                            <li><a href="#">Engineering</a></li>
-                            <li><a href="#">Software & Web</a></li>
-                            <li><a href="#">Telemarketing</a></li>
+                            <li><a href="/candidates/Python">Python Developer</a></li>
+                            <li><a href="/candidates/JavaScript">JavaScript Developer</a></li>
+                            <li><a href="/candidates/Java">Java Developer</a></li>
+                            <li><a href="/candidates/PHP">PHP Developer</a></li>
+                            <li><a href="/candidates/C++">C++ and C# Developer</a></li>
                         </ul>
                     </div>
                 </div>

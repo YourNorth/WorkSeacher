@@ -5,10 +5,14 @@ import com.tenere_bufo.itis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Controller
@@ -23,9 +27,7 @@ public class FindCandidateForEmployerController {
 
     @GetMapping("/candidate")
     public String getCandidate(Map<String, Object> model){
-        List<User> users = userService.findAll()
-                .stream().filter(s -> s.getDescription() != null)
-                .collect(Collectors.toList());
+        List<User> users = getNormalUsers();
         model.put("users", users);
         return "candidate";
     }
@@ -36,9 +38,23 @@ public class FindCandidateForEmployerController {
         return "candidate";
     }
 
+    @GetMapping("/candidates/{skill}")
+    public String getCandidateByKeySkills(@PathVariable(value="skill") String skill, Map<String, Object> model){
+        List<User> usersAll = getNormalUsers();
+        List<User> users = new ArrayList<>();
+        Pattern pattern = Pattern.compile(".+" + skill + ".+");
+        usersAll.forEach(user -> {
+            Matcher matcher = pattern.matcher(user.getGeneral_skill());
+            if (matcher.matches()) {
+                users.add(user);
+            }
+        });
+        model.put("users", users);
+        return "candidate";
+    }
+
     private List<User> sortByParameters(User user) {
-        List<User> users = userService.findAll().stream().filter(s -> s.getDescription() != null)
-                .collect(Collectors.toList());
+        List<User> users = getNormalUsers();
         users = sortByFirstName(user, users);
         users = sortByLastName(user, users);
         users = sortByCountry(user, users);
@@ -111,5 +127,11 @@ public class FindCandidateForEmployerController {
                     .collect(Collectors.toList());
         }
         return users;
+    }
+
+    private List<User> getNormalUsers(){
+        return userService.findAll()
+                .stream().filter(s -> s.getDescription() != null)
+                .collect(Collectors.toList());
     }
 }

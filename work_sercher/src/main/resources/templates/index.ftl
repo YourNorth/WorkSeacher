@@ -157,13 +157,13 @@
                     <div class="popular_search d-flex align-items-center">
                         <span>Popular Search:</span>
                         <ul>
-                            <li><a href="#">Design & Creative</a></li>
-                            <li><a href="#">Marketing</a></li>
-                            <li><a href="#">Administration</a></li>
-                            <li><a href="#">Teaching & Education</a></li>
-                            <li><a href="#">Engineering</a></li>
-                            <li><a href="#">Software & Web</a></li>
-                            <li><a href="#">Telemarketing</a></li>
+                            <li><a href="/jobs">Design & Creative</a></li>
+                            <li><a href="/jobs">Marketing</a></li>
+                            <li><a href="/jobs">Administration</a></li>
+                            <li><a href="/jobs">Teaching & Education</a></li>
+                            <li><a href="/jobs">Engineering</a></li>
+                            <li><a href="/jobs">Software & Web</a></li>
+                            <li><a href="/jobs">Telemarketing</a></li>
                         </ul>
                     </div>
                 </div>
