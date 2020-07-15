@@ -8,12 +8,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests -f ./work_sercher -Ptest clean package'
+                dir( 'work_sercher'){
+                    sh 'mvn -B -DskipTests -Ptest clean package'
+                }
             }
         }
         stage('Test') { 
             steps {
-                sh 'mvn -f ./work_sercher  -Ptest test' 
+                dir( 'work_sercher'){
+                    sh 'mvn -Ptest test' 
+                }
             }
             post {
                 always {
@@ -23,8 +27,10 @@ pipeline {
         }
 	stage('Deliver') { 
             steps {
-                sh 'mvn -B -DskipTests -f ./work_sercher -Prelease package'
-                sh '/home/jenkins/scripts/deliver.sh' 
+                dir( 'work_sercher'){
+                    sh 'mvn -B -DskipTests -Prelease package'
+                    sh '/home/jenkins/scripts/deliver.sh' 
+                }
             }
         }	
     }
