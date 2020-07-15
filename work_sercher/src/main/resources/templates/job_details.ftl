@@ -171,7 +171,7 @@
                     </div>
                     <div class="apply_job_form white-bg">
                         <h4>Apply for the job</h4>
-                        <form action="/company/${company.name}" method="post">
+                        <form action="/company/${company.name}" method="post" id="form1">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
@@ -236,7 +236,7 @@
                             return false;
                         } else {
                             swal("Good job!", 'Ok', "success");
-                            let form = document.getElementById("form");
+                            let form = document.getElementById("form1");
                             form.submit();
                         }
                     }

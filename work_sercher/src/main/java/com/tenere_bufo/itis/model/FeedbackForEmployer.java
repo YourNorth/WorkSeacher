@@ -1,7 +1,6 @@
 package com.tenere_bufo.itis.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +11,13 @@ import java.io.File;
 @Entity(name = "feedbackForEmployer")
 @Table
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class FeedbackForEmployer extends BaseEntity{
 
-    @Column(name = "job_type")
-    private Long job_id;
+    @Column(name = "worker_id")
+    private Long worker_id;
 
     @Column(name = "user_id")
     private Long user_id;

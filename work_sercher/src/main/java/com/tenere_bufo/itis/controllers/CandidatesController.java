@@ -1,7 +1,9 @@
 package com.tenere_bufo.itis.controllers;
 
 import com.tenere_bufo.itis.model.FeedbackForEmployer;
+import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
+import com.tenere_bufo.itis.services.FeedbackForEmployerService;
 import com.tenere_bufo.itis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
@@ -17,16 +23,18 @@ import java.util.Optional;
 public class CandidatesController {
 
     private final UserService userService;
+    private final FeedbackForEmployerService feedbackForEmployerService;
 
     @Autowired
-    public CandidatesController(UserService userService) {
+    public CandidatesController(UserService userService, FeedbackForEmployerService feedbackForEmployerService) {
         this.userService = userService;
+        this.feedbackForEmployerService = feedbackForEmployerService;
     }
 
     @GetMapping("/candidate/{id}")
-    public String getUser(@PathVariable("id") Long id, Map<String, Object> model){
+    public String getUser(@PathVariable("id") Long id, Map<String, Object> model) {
         Optional<User> users = userService.findById(id);
-        if (users.isPresent()){
+        if (users.isPresent()) {
             model.put("users", Collections.singletonList(users.get()));
             return "candidate_details";
         }
@@ -34,8 +42,18 @@ public class CandidatesController {
     }
 
     @PostMapping("/candidate/{id}")
-    public String toSendLetter(@PathVariable("id") Long id, FeedbackForEmployer feedback){
-        System.out.println(feedback);
+    public String toSendLetter(@PathVariable(name = "id") Long id, FeedbackForEmployer feedback, ServletRequest servletRequest) {
+        feedback.setCreated(new Date());
+        feedback.setUpdated(new Date());
+        feedback.setStatus(State.ACTIVE);
+        feedback.setUser_id(id);
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpSession session = request.getSession(false);
+        if (session.getAttribute("email") != null){
+            User user = userService.find((String) session.getAttribute("email")).get();
+            feedback.setWorker_id(user.getId());
+            feedbackForEmployerService.save(feedback);
+        }
         return "redirect:/candidate/{id}";
     }
 }

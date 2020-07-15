@@ -169,10 +169,9 @@
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
                         </div>
                     </div>
-                    <form action="/candidate/${user.id}" method="post">
+                    <form action="/candidate/${user.id}" method="post" id="form2">
                     <div class="apply_job_form white-bg">
                         <h4>Apply for candidate</h4>
-                        <form action="#">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
@@ -192,7 +191,7 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                            <button type="button"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
                                             </button>
                                         </div>
                                         <div class="custom-file" id="file" name="file">
@@ -214,7 +213,6 @@
                             </div>
                         </form>
                     </div>
-                    </form>
                 </div>
 
                 <script>
@@ -242,7 +240,7 @@
                             return false;
                         } else {
                             swal("Good job!", 'Ok', "success");
-                            let form = document.getElementById("form");
+                            let form = document.getElementById("form2");
                             form.submit();
                         }
                     }
