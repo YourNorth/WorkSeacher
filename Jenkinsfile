@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine'
-            args '-v /home/.m2:/root/.m2'
+            args '-v /home/:/root/ -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
@@ -25,11 +25,11 @@ pipeline {
                 }
             }
         }
-	stage('Deliver') { 
+        stage('Deliver') { 
             steps {
                 dir( 'work_sercher'){
                     sh 'mvn -B -DskipTests -Prelease package'
-                    sh '/home/jenkins/scripts/deliver.sh' 
+                    sh 'DOCKER_HOST=/var/run/docker.sock mvn spring-boot:build-image -DskipTests -Prelease -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker'                    
                 }
             }
         }	
