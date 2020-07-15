@@ -211,11 +211,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="serch_cat d-flex justify-content-end">
-                                        <select>
+                                        <select id="sort" name="sort">
                                             <option data-display="Sort by">Sort by</option>
-                                            <option value="Name">Name</option>
-                                            <option value="Location">Location</option>
-                                            <option value="Experience">Experience</option>
+                                            <option value="name">Name</option></a>
+                                            <option value="location">Location</option>
+                                            <option value="jobType">Job type</option>
+                                            <option value="amount">Amount</option>
                                         </select>
                                     </div>
                                 </div>
