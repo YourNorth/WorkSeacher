@@ -2,6 +2,7 @@ package com.tenere_bufo.itis.services.impl;
 
 import com.tenere_bufo.itis.dto.AuthenticationRequestDto;
 import com.tenere_bufo.itis.dto.CaptchaResponseDto;
+import com.tenere_bufo.itis.model.Role;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.repository.UserRepository;
@@ -46,13 +47,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user, String captchaResponse) {
+        Optional<Role> roleUser = rolesService.findByName("USER");
+        if (roleUser.isPresent()) {
+            Set<Role> userRoles = new HashSet<>();
+            userRoles.add(roleUser.get());
+            user.setRoles(userRoles);
+        }
         String hashPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashPassword);
         user.setStatus(State.ACTIVE);
         user.setToken(generateNewToken());
         user.setCreated(new Date());
         user.setUpdated(new Date());
-        add(user);
+        User registeredUser = userRepository.save(user);
+        log.info("IN register - user: {} successfully registered", registeredUser);
     }
 
     private static String generateNewToken() {
@@ -74,29 +82,29 @@ public class UserServiceImpl implements UserService {
             Attributes.addErrorAttributes(model, "Fill captcha!");
             return false;
         }
-        User user = find(userForm.getEmail()).orElse(null);
-        if (user == null || !passwordEncoder.matches(userForm.getPassword(), user.getPassword())) {
+        Optional<User> user = find(userForm.getEmail());
+        if (!user.isPresent() || !passwordEncoder.matches(userForm.getPassword(), user.get().getPassword())) {
             log.info("User with this email and password could not log in: " + userForm.getEmail() + " and " + userForm.getPassword());
             Attributes.addErrorAttributes(model, "Wrong login or password!");
             return false;
         }
-        if (user.getStatus() == State.ACTIVE){
+        if (user.get().getStatus() == State.ACTIVE) {
             Attributes.addSuccessAttributes(model, "Success!");
-            session.setAttribute("email", user.getEmail());
+            session.setAttribute("email", user.get().getEmail());
             log.info("User with this mail went to the site: " + userForm.getEmail());
             return true;
         }
-        if (user.getStatus() == State.NOT_ACTIVE){
+        if (user.get().getStatus() == State.NOT_ACTIVE) {
             Attributes.addErrorAttributes(model, "Your account is inactive since you did not confirm your mail!");
             log.info("The user with this mail was not logged in as he did not confirm the mail: " + userForm.getEmail());
         }
-        if (user.getStatus() == State.BANNED){
+        if (user.get().getStatus() == State.BANNED) {
             Attributes.addErrorAttributes(model, "Your account has been banned!");
             log.info("A user with this mail has not logged in as he is banned: " + userForm.getEmail());
         }
-        if (user.getStatus() == State.DELETED){
+        if (user.get().getStatus() == State.DELETED) {
             Attributes.addErrorAttributes(model, "Your account has been deleted!");
-            log.info("The user with this mail was not logged in as he was deleted: " + user.getEmail());
+            log.info("The user with this mail was not logged in as he was deleted: " + user.get().getEmail());
         }
         return false;
     }
@@ -104,11 +112,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public boolean confirm(String token, ModelMap model, HttpSession session) {
-        User user = findByToken(token).orElse(null);
-        if (user != null) {
-            userRepository2.update(user);
-            session.setAttribute("email", user.getEmail());
-            log.info("A user with this mail has confirmed it: " + user.getEmail());
+        Optional<User> user = findByToken(token);
+        if (user.isPresent()) {
+            userRepository2.update(user.get());
+            session.setAttribute("email", user.get().getEmail());
+            log.info("A user with this mail has confirmed it: " + user.get().getEmail());
             return true;
         } else {
             log.info("User attempt to confirm mail failed: " + token);

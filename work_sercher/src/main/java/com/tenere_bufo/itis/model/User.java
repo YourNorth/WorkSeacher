@@ -1,17 +1,17 @@
 package com.tenere_bufo.itis.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "users")
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 public class User extends BaseEntity{
 
     @Column(name = "age")
@@ -60,5 +60,26 @@ public class User extends BaseEntity{
     @JoinTable(name = "user_roles",
     joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
     inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
+    @Fetch(value = FetchMode.SELECT)
     private Set<Role> roles;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "age=" + age +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", description='" + description + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", gender='" + gender + '\'' +
+                ", token='" + token + '\'' +
+                ", general_skill='" + general_skill + '\'' +
+                ", education='" + education + '\'' +
+                ", native_language='" + native_language + '\'' +
+                ", link_img='" + link_img + '\'' +
+                '}';
+    }
 }
