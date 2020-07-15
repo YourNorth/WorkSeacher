@@ -16,6 +16,9 @@
             <#if title?? && message?? && category?? >
                 swal('${title}', '${message}', '${category}');
             </#if>
+<#--            <#if SPRING_SECURITY_LAST_EXCEPTION??>-->
+<#--                swal('Error', ${SPRING_SECURITY_LAST_EXCEPTION.message}, 'error');-->
+<#--            </#if>-->
         }
         window.onload = funOnLoad;
     </script>

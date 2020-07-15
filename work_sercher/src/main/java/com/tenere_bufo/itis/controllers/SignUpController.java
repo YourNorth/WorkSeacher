@@ -45,13 +45,14 @@ public class SignUpController {
 
     @GetMapping
     public String getSignUp(ModelMap map) {
-        Attributes.addSuccessAttributes(map, "You have successfully logged in!");
+        //Attributes.addSuccessAttributes(map, "You have successfully logged in!");
         return "signUp";
     }
 
     @PostMapping
     public String signUp(User user, BindingResult result, ModelMap model,
                          @RequestParam("g-recaptcha-response") String captchaResponse) {
+
         String error = "";
         userValidator.validate(user, result);
         String url = String.format(CAPTCHA_URL, secret, captchaResponse);

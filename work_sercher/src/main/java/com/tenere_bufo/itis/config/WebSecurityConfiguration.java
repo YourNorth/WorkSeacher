@@ -17,7 +17,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/signIn").loginProcessingUrl("/signIn").permitAll();
 
         http.authorizeRequests()
-                .antMatchers("/css/**","/img/**","/fonts/**","/js/**","/scss/**","/signIn","signUp").permitAll()
+                .antMatchers("/css/**","/img/**","/fonts/**","/js/**","/scss/**","/signUp").permitAll()
                 .antMatchers("/**").authenticated();
     }
 }
