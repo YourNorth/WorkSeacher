@@ -1,5 +1,6 @@
 package com.tenere_bufo.itis.security.details;
 
+import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -55,6 +56,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true; //todo implement normal
+        return user.getStatus().equals(State.ACTIVE);
     }
 }
