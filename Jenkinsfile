@@ -42,6 +42,7 @@ pipeline {
         }	
         stage('Start server'){
             steps{
+                sh 'echo test'
                 //sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker run --name work_finder --detach --volume /home/developer/keys/keystore.p12:/home/keys/keystore.p12 --network jenkins -p 443:443  -u root -t docker.io/springio/gs-spring-boot-docker'
             }
         }
