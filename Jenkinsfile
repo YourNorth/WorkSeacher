@@ -43,7 +43,7 @@ pipeline {
         stage('Start server'){
             steps{
                 //sh 'echo test'
-                sh 'DOCKER_CERT_PATH=/certs/client DOCKER_TLS_VERIFY=1 DOCKER_HOST=tcp://172.18.0.3:2376 docker run --name work_finder --detach --volume /home/keys/keystore.p12:/home/keys/keystore.p12 --network host -p 443:443  -u root -t springio/gs-spring-boot-docker'
+                sh 'DOCKER_CERT_PATH=/certs/client DOCKER_TLS_VERIFY=1 DOCKER_HOST=tcp://172.18.0.3:2376 docker run --restart unless-stopped --name work_finder --detach --volume /home/keys/keystore.p12:/home/keys/keystore.p12 --network host -p 443:443  -u root -t springio/gs-spring-boot-docker'
             }
         }
     }
