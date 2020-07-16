@@ -30,4 +30,9 @@ public class MainController {
     public String getProfileForEmployer(){
         return "profile_work";
     }
+
+    @GetMapping("/have_profile")
+    public String checkProfile(){
+        return "have_profile";
+    }
 }
