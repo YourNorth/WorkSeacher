@@ -10,7 +10,6 @@
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -31,8 +30,7 @@
 
 <body>
 <!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-    your browser</a> to improve your experience and security.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
 <!-- header-start -->
@@ -95,152 +93,82 @@
 <!-- header-end -->
 
 <!-- bradcam_area  -->
-<#list companies as company>
-    <div class="bradcam_area bradcam_bg_1">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text">
-                        <h3>${company.category}</h3>
-                    </div>
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Create profile for candidate</h3>
                 </div>
             </div>
         </div>
     </div>
-    <!--/ bradcam_area  -->
+</div>
+<!--/ bradcam_area  -->
 
-    <div class="job_details_area">
+<!-- catagory_area -->
+<form action="/candidate" method="post">
+    <div class="catagory_area">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="job_details_header">
-                        <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="${company.link_img}" alt="">
-                                </div>
-                                <div class="jobs_conetent">
-                                    <a href="#"><h4>${company.name}</h4></a>
-                                    <div class="links_locat d-flex align-items-center">
-                                        <div class="location">
-                                            <p><i class="fa fa-map-marker"></i>${company.location}</p>
-                                        </div>
-                                        <div class="location">
-                                            <p><i class="fa fa-clock-o"></i>${company.jobType}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="firstName" name="firstName" placeholder="First name">
                     </div>
-                    <div class="descript_wrap white-bg">
-                        <div class="single_wrap">
-                            <h4>Job description</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                                need to be sure there isn't anything embarrassing.</p>
-                            <p>Variations of passages of lorem Ipsum available, but the majority have suffered
-                                alteration in some form, by injected humour, or randomised words which don't look even
-                                slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be
-                                sure there isn't anything embarrassing.</p>
-                        </div>
-                        <div class="single_wrap">
-                            <h4>Responsibility</h4>
-                            <ul>
-                                <li>The applicants should have experience in the following areas.
-                                </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
-                            </ul>
-                        </div>
-                        <div class="single_wrap">
-                            <h4>Qualifications</h4>
-                            <ul>
-                                <li>The applicants should have experience in the following areas.
-                                </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
-                            </ul>
-                        </div>
-                        <div class="single_wrap">
-                            <h4>Benefits</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                                need to be sure there isn't anything embarrassing.</p>
-                        </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="lastName" name="lastName" placeholder="Last name">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="country" name="country" placeholder="Country">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="number" min="12" max="100" autocomplete="off" id="age" name="age" placeholder="Age">
                     </div>
                 </div>
-
-                <div class="col-lg-4">
-                    <div class="job_sumary">
-                        <div class="summery_header">
-                            <h3>Job Summery</h3>
-                        </div>
-                        <div class="job_content">
-                            <ul>
-                                <li>Published on: <span>12 Nov, 2019</span></li>
-                                <li>Vacancy: <span> ${company.category}</span></li>
-                                <li>Salary: <span>${company.amount}</span></li>
-                                <li>Location: <span> ${company.location}</span></li>
-                                <li>Job Nature: <span> ${company.jobType}</span></li>
-                                <li>Experience: <span> ${company.experience}</span></li>
-                                <li>Gender: <span> ${company.gender}</span></li>
-                                <li>Qualification: <span> ${company.qualification}</span></li>
-                            </ul>
-                        </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="city" name="city" placeholder="City">
                     </div>
-                    <div class="share_wrap d-flex">
-                        <span>Share at:</span>
-                        <ul>
-                            <li><a href="#"> <i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"> <i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"> <i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"> <i class="fa fa-envelope"></i></a></li>
-                        </ul>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="general_skill" name="general_skill" placeholder="General skill">
                     </div>
-                    <div class="job_location_wrap">
-                        <div class="job_lok_inner">
-                            <div id="map" style="height: 200px;"></div>
-                            <script>
-                                function initMap() {
-                                    var uluru = {lat: -25.363, lng: 131.044};
-                                    var grayStyles = [
-                                        {
-                                            featureType: "all",
-                                            stylers: [
-                                                {saturation: -90},
-                                                {lightness: 50}
-                                            ]
-                                        },
-                                        {elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]}
-                                    ];
-                                    var map = new google.maps.Map(document.getElementById('map'), {
-                                        center: {lat: -31.197, lng: 150.744},
-                                        zoom: 9,
-                                        styles: grayStyles,
-                                        scrollwheel: false
-                                    });
-                                }
-
-                            </script>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
-
-                        </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="native_language" name="native_language" placeholder="Native language">
                     </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <select id="gender" name="gender" class="wide" >
+                            <option data-display="Gender">Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <div class="reset_btn">
+                        <button  class="boxed-btn3 w-100" type="submit">Create my profile</button>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="form-group col-lg-9 col-md-12">
+                    <label for="exampleFormControlTextarea1"></label>
+                    <textarea placeholder="Description" class="form-control" id="description" name="description" rows="10" cols="90"></textarea>
                 </div>
             </div>
-        </div>
     </div>
-</#list>
+</form>
+<!--/ catagory_area -->
+
+<!-- featured_candidates_area_start  -->
+<!-- featured_candidates_area_end  -->
+
+
 
 <!-- footer start -->
 <footer class="footer">
@@ -361,6 +289,7 @@
 <script src="/js/jquery.magnific-popup.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/gijgo.min.js"></script>
+
 
 
 <!--contact js-->

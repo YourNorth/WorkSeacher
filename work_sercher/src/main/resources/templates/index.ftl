@@ -56,7 +56,6 @@
                                             <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="/candidate">Candidates </a></li>
-                                                    <li><a href="/job_details">job details </a></li>
                                                     <li><a href="/elements">elements</a></li>
                                                 </ul>
                                             </li>
@@ -77,7 +76,7 @@
                                         <a href="#">My profile</a>
                                     </div>
                                     <div class="d-none d-lg-block">
-                                        <a class="boxed-btn3" href="#">Post a Job</a>
+                                        <a class="boxed-btn3" href="/create_profile">Create profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +103,7 @@
                             <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">Find your Dream Job</h3>
                             <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">We provide online instant cash loans with quick approval that suit your term length</p>
                             <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
-                                <a href="#" class="boxed-btn3">Upload your Resume</a>
+                                <a href="/create_profile" class="boxed-btn3">Upload your Resume</a>
                             </div>
                         </div>
                     </div>
@@ -472,7 +471,7 @@
                     <div class="searching_text">
                         <h3>Looking for a Expert?</h3>
                         <p>We provide online instant cash loans with quick approval </p>
-                        <a href="#" class="boxed-btn3">Post a Job</a>
+                        <a href="/create_profile" class="boxed-btn3">Create my profile</a>
                     </div>
                 </div>
             </div>

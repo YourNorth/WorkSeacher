@@ -33,7 +33,7 @@ public class IndexController {
     }
 
     @PostMapping("/index")
-    public String findJob(Company company){
+    public String findJob(){
         return "redirect:/jobs";
     }
 

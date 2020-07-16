@@ -25,4 +25,9 @@ public class MainController {
     public String getSingleBlog(){
         return "single-blog";
     }
+
+    @GetMapping("/profile_work")
+    public String getProfileForEmployer(){
+        return "profile_work";
+    }
 }

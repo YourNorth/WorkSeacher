@@ -55,7 +55,6 @@
                                             <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="/candidate">Candidates </a></li>
-                                                    <li><a href="/job_details">job details </a></li>
                                                     <li><a href="/elements">elements</a></li>
                                                 </ul>
                                             </li>
@@ -76,7 +75,7 @@
                                         <a href="#">My profile</a>
                                     </div>
                                     <div class="d-none d-lg-block">
-                                        <a class="boxed-btn3" href="#">Post a Job</a>
+										<a class="boxed-btn3" href="/create_profile">Create profile</a>
                                     </div>
                                 </div>
                             </div>
