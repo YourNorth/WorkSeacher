@@ -17,12 +17,22 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    /*
+    @Autowired
+    private FormLoginConfigurerEnhancer enhancer;
+*/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().disable()
                 .csrf().disable();
 
-        http.formLogin().loginPage("/signIn").loginProcessingUrl("/signIn").usernameParameter("email").permitAll();
+        //enhancer.addRecaptchaSupport(http.formLogin())
+        http.formLogin()
+                .loginPage("/signIn")
+                .loginProcessingUrl("/signIn").
+                usernameParameter("email")
+
+                .successForwardUrl("/blog").permitAll();
 
         http.authorizeRequests()
                 .antMatchers("/css/**","/img/**","/fonts/**","/js/**","/scss/**","/signUp").permitAll()
