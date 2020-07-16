@@ -33,12 +33,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic().disable()
                 .csrf().disable();
 
+
         //enhancer.addRecaptchaSupport(http.formLogin())
         http.formLogin()
                 .loginPage("/signIn")
-                .loginProcessingUrl("/signIn").
-                usernameParameter("email")
-                .successForwardUrl("/blog");
+                .loginProcessingUrl("/signIn")
+                .usernameParameter("email")
+                .defaultSuccessUrl("/blog");
 
         http.logout()
                 .logoutUrl("/logout")

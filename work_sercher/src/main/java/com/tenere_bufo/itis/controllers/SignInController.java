@@ -34,7 +34,6 @@ public class SignInController {
                 Attributes.addErrorAttributes(modelMap, ex.getMessage());
             }
         }
-
         return "signIn";
     }
 
