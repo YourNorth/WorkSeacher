@@ -27,8 +27,8 @@ public class SignInController {
     @GetMapping("/signIn")
     public String getSignIn(HttpServletRequest request, ModelMap modelMap, @RequestParam(value = "error", required = false) String error){
         LogManager.getLogManager().reset();
-        HttpSession session = request.getSession(false);
-        if (session != null){
+        HttpSession session = request.getSession(false);        //session need for get login error message
+        if (session != null && error != null){
             AuthenticationException ex = (AuthenticationException) session.getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
             if (ex != null) {
                 Attributes.addErrorAttributes(modelMap, ex.getMessage());

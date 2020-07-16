@@ -20,8 +20,8 @@ public class ConfirmController {
     }
 
     @GetMapping("/{token}")
-    public String checkToken(@PathVariable("token") String token, ModelMap model, HttpSession session){
-        if (userService.confirm(token, model, session)) {
+    public String checkToken(@PathVariable("token") String token, ModelMap model){
+        if (userService.confirm(token, model)) {
             return "redirect:/developers";
         }
         return "/signIn";

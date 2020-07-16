@@ -6,12 +6,19 @@ import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.repository.UserRepository;
 import com.tenere_bufo.itis.repository.UserRepository2;
+import com.tenere_bufo.itis.security.details.UserDetailsImpl;
 import com.tenere_bufo.itis.services.RolesService;
 import com.tenere_bufo.itis.services.UserService;
 import com.tenere_bufo.itis.utils.Attributes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +33,8 @@ import java.util.*;
 public class UserServiceImpl implements UserService {
     private final static String CAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
 
+
+
     @Value("${recaptcha.secret}")
     private String secret;
 
@@ -34,14 +43,17 @@ public class UserServiceImpl implements UserService {
     private final RestTemplate restTemplate;
     private final UserRepository2 userRepository2;
     private final RolesService rolesService;
+    private final AuthenticationManager authenticationManager;
+
 
     @Autowired
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, RestTemplate restTemplate, UserRepository2 userRepository2, RolesService rolesService) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, RestTemplate restTemplate, UserRepository2 userRepository2, RolesService rolesService, AuthenticationManager authenticationManager) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.restTemplate = restTemplate;
         this.userRepository2 = userRepository2;
         this.rolesService = rolesService;
+        this.authenticationManager=authenticationManager;
     }
 
     @Override
@@ -66,47 +78,15 @@ public class UserServiceImpl implements UserService {
                 .toString();
     }
 
-    public boolean signIn(AuthenticationRequestDto userForm, ModelMap model, HttpSession session, String captchaResponse) {
-        String url = String.format(CAPTCHA_URL, secret, captchaResponse);
-        CaptchaResponseDto response = restTemplate.postForObject(url, Collections.emptyList(), CaptchaResponseDto.class);
-        if (!Objects.requireNonNull(response).isSuccess()) {
-            Attributes.addErrorAttributes(model, "Fill captcha!");
-            return false;
-        }
-        User user = find(userForm.getEmail()).orElse(null);
-        if (user == null || !passwordEncoder.matches(userForm.getPassword(), user.getPassword())) {
-            log.info("User with this email and password could not log in: " + userForm.getEmail() + " and " + userForm.getPassword());
-            Attributes.addErrorAttributes(model, "Wrong login or password!");
-            return false;
-        }
-        if (user.getStatus() == State.ACTIVE){
-            Attributes.addSuccessAttributes(model, "Success!");
-            session.setAttribute("email", user.getEmail());
-            log.info("User with this mail went to the site: " + userForm.getEmail());
-            return true;
-        }
-        if (user.getStatus() == State.NOT_ACTIVE){
-            Attributes.addErrorAttributes(model, "Your account is inactive since you did not confirm your mail!");
-            log.info("The user with this mail was not logged in as he did not confirm the mail: " + userForm.getEmail());
-        }
-        if (user.getStatus() == State.BANNED){
-            Attributes.addErrorAttributes(model, "Your account has been banned!");
-            log.info("A user with this mail has not logged in as he is banned: " + userForm.getEmail());
-        }
-        if (user.getStatus() == State.DELETED){
-            Attributes.addErrorAttributes(model, "Your account has been deleted!");
-            log.info("The user with this mail was not logged in as he was deleted: " + user.getEmail());
-        }
-        return false;
-    }
 
     @Override
     @Transactional
-    public boolean confirm(String token, ModelMap model, HttpSession session) {
+    public boolean confirm(String token, ModelMap model) {
         User user = findByToken(token).orElse(null);
         if (user != null) {
             userRepository2.update(user);
-            session.setAttribute("email", user.getEmail());
+            UserDetailsImpl userDetails = new UserDetailsImpl(user);
+            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities())); //auth user
             log.info("A user with this mail has confirmed it: " + user.getEmail());
             return true;
         } else {

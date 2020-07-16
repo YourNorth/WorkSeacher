@@ -3,9 +3,11 @@ package com.tenere_bufo.itis.controllers;
 import com.tenere_bufo.itis.model.FeedbackForEmployer;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
+import com.tenere_bufo.itis.security.details.UserDetailsImpl;
 import com.tenere_bufo.itis.services.FeedbackForEmployerService;
 import com.tenere_bufo.itis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,15 +44,13 @@ public class CandidatesController {
     }
 
     @PostMapping("/candidate/{id}")
-    public String toSendLetter(@PathVariable(name = "id") Long id, FeedbackForEmployer feedback, ServletRequest servletRequest) {
+    public String toSendLetter(@PathVariable(name = "id") Long id, FeedbackForEmployer feedback, Authentication authentication) {
         feedback.setCreated(new Date());
         feedback.setUpdated(new Date());
         feedback.setStatus(State.ACTIVE);
         feedback.setUser_id(id);
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpSession session = request.getSession(false);
-        if (session.getAttribute("email") != null){
-            User user = userService.find((String) session.getAttribute("email")).get();
+        if (authentication != null){
+            User user = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
             feedback.setWorker_id(user.getId());
             feedbackForEmployerService.save(feedback);
         }
