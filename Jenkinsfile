@@ -36,7 +36,7 @@ pipeline {
                 dir( 'work_sercher'){
                     sh 'mvn -B -DskipTests -Prelease package'
                     sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker rmi -f springio/gs-spring-boot-docker || true'
-                    sh 'DOCKER_HOST=/var/run/docker.sock mvn spring-boot:build-image -DskipTests -Prelease -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker'   
+                    sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 "cd /home/developer/GitHub/WorkSeacher/work_sercher spring-boot:build-image -DskipTests -Prelease -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker;"'   
                 }
             }
         }	
