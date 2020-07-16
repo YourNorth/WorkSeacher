@@ -256,6 +256,7 @@
                                 <li>Experience: <span> ${company.experience}</span></li>
                                 <li>Gender: <span> ${company.gender}</span></li>
                                 <li>Qualification: <span> ${company.qualification}</span></li>
+                                <li>Contact: <span> ${company.email}</span></li>
                             </ul>
                         </div>
                     </div>

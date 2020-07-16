@@ -46,7 +46,7 @@ public class CreateProfileController {
     }
 
     @PostMapping("/create_profile_employer")
-    public String createProfileForEmployer(Company company){
+    public String createProfileForEmployer(Company company, Authentication authentication){
         List<String> images = Arrays.asList("/img/svg_icon/1.svg", "/img/svg_icon/2.svg", "/img/svg_icon/3.svg",
                 "/img/svg_icon/4.svg", "/img/svg_icon/5.svg");
         company.setLink_img(images.get((int) (Math.random() * 5)));
@@ -54,6 +54,10 @@ public class CreateProfileController {
         company.setStatus(State.ACTIVE);
         company.setCreated(new Date());
         company.setUpdated(new Date());
+        if (authentication != null) {
+            User u = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
+            company.setEmail(u.getEmail());
+        }
         companyRepository.save(company);
         return "profile_candidate";
     }

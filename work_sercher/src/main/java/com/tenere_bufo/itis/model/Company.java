@@ -19,6 +19,9 @@ public class Company extends BaseEntity{
     @Column(name = "location")
     private String location;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "category")
     private String category;
 
