@@ -33,8 +33,6 @@ public class CandidatesController {
     @GetMapping("/candidate/{id}")
     public String getUser(@PathVariable("id") Long id, Map<String, Object> model, Authentication authentication) {
         Optional<User> users = userService.findById(id);
-        User user1 = (User) authentication.getAuthorities();
-        System.out.println(user1.getRoles());
         if (users.isPresent()) {
             //если роль - employer, то return "candidate_details"
             //если роль - user, то return "candidate_details_less"
