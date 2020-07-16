@@ -2,6 +2,7 @@ package com.tenere_bufo.itis.services.impl;
 
 import com.tenere_bufo.itis.dto.AuthenticationRequestDto;
 import com.tenere_bufo.itis.dto.CaptchaResponseDto;
+import com.tenere_bufo.itis.model.Role;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.repository.UserRepository;
@@ -58,13 +59,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user, String captchaResponse) {
+        Optional<Role> roleUser = rolesService.findByName("USER");
+        if (roleUser.isPresent()) {
+            Set<Role> userRoles = new HashSet<>();
+            userRoles.add(roleUser.get());
+            user.setRoles(userRoles);
+        }
         String hashPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashPassword);
         user.setStatus(State.ACTIVE);
         user.setToken(generateNewToken());
         user.setCreated(new Date());
         user.setUpdated(new Date());
-        add(user);
+        User registeredUser = userRepository.save(user);
+        log.info("IN register - user: {} successfully registered", registeredUser);
     }
 
     private static String generateNewToken() {
@@ -77,7 +85,6 @@ public class UserServiceImpl implements UserService {
                 .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
                 .toString();
     }
-
 
     @Override
     @Transactional
