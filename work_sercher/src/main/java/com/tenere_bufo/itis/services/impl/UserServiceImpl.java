@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user, String captchaResponse) {
-        Optional<Role> roleUser = rolesService.findByName("USER");
+        Optional<Role> roleUser = rolesService.findByName("ROLE_USER");
         if (roleUser.isPresent()) {
             Set<Role> userRoles = new HashSet<>();
             userRoles.add(roleUser.get());
