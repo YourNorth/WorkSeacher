@@ -129,7 +129,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <select id="experience" name="experience" class="wide">
+                        <select id="category" name="category" class="wide">
                             <option data-display="Experience">Experience</option>
                             <option value="Java Developer">Java Developer</option>
                             <option value="Python Developer">Python Developer</option>
@@ -137,16 +137,16 @@
                         </select>
                     </div>
                     <div class="single_input">
-                        <select id="jobType" name="jobType" class="wide">
-                            <option data-display="Job type">Job type</option>
+                        <select id="experience" name="experience" class="wide">
+                            <option data-display="Experience">Experience</option>
                             <option value="Less 1 year">Less 1 year</option>
                             <option value="More 1 year">More 1 year</option>
                             <option value="More 3 years">More 3 years</option>
                         </select>
                     </div>
                     <div class="single_input">
-                        <select id="category" name="category" class="wide">
-                            <option data-display="Category">Category</option>
+                        <select id="jobType" name="jobType" class="wide">
+                            <option data-display="Job type">job Type</option>
                             <option value="Full time">Full time</option>
                             <option value="Part time">Part time</option>
                         </select>
@@ -158,6 +158,13 @@
                             <option data-display="Qualification">Qualification</option>
                             <option value="Programmer">Programmer</option>
                             <option value="Tester">Tester</option>
+                        </select>
+                    </div>
+                    <div class="single_input">
+                        <select id="gender" name="gender" class="wide">
+                            <option data-display="Gender">Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
                 </div>
@@ -182,6 +189,7 @@
         let jobType = document.getElementById('jobType');
         let category = document.getElementById('category');
         let qualification = document.getElementById('qualification');
+        let gender = document.getElementById('gender');
         let error = '';
         if (name.value.length < 2 || name.value.length > 50) {
             error += 'Company name must be between 2 and 50 characters! \n';
@@ -203,6 +211,9 @@
         }
         if (qualification.value === "Qualification"){
             error += 'Qualification field cannot be empty! \n';
+        }
+        if (gender.value === "Gender"){
+            error += 'Gender field cannot be empty! \n';
         }
         if (error !== '') {
             swal("Oops", error, "error");

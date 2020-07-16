@@ -177,11 +177,11 @@
         let description = document.getElementById('description');
         let gender = document.getElementById('gender');
         let error = '';
-        if (firstName.value.length < 6 || firstName.value.length > 50) {
-            error += 'First name must be between 6 and 50 characters! \n';
+        if (firstName.value.length < 2 || firstName.value.length > 50) {
+            error += 'First name must be between 2 and 50 characters! \n';
         }
-        if (lastName.value.length < 6 || lastName.value.length > 50) {
-            error += 'Last name must be between 6 and 50 characters! \n';
+        if (lastName.value.length < 2 || lastName.value.length > 50) {
+            error += 'Last name must be between 2 and 50 characters! \n';
         }
         if (country.value.length < 3 || country.value.length > 50) {
             error += 'Country must be between 3 and 50 characters! \n';

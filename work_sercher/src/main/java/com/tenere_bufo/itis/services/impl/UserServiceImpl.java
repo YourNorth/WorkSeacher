@@ -1,7 +1,5 @@
 package com.tenere_bufo.itis.services.impl;
 
-import com.tenere_bufo.itis.dto.AuthenticationRequestDto;
-import com.tenere_bufo.itis.dto.CaptchaResponseDto;
 import com.tenere_bufo.itis.model.Role;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
@@ -10,23 +8,18 @@ import com.tenere_bufo.itis.repository.UserRepository2;
 import com.tenere_bufo.itis.security.details.UserDetailsImpl;
 import com.tenere_bufo.itis.services.RolesService;
 import com.tenere_bufo.itis.services.UserService;
-import com.tenere_bufo.itis.utils.Attributes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.client.RestTemplate;
 
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Service
@@ -91,7 +84,7 @@ public class UserServiceImpl implements UserService {
     public boolean confirm(String token, ModelMap model) {
         User user = findByToken(token).orElse(null);
         if (user != null) {
-            userRepository2.update(user);
+            userRepository2.updateByStatus(user);
             UserDetailsImpl userDetails = new UserDetailsImpl(user);
             SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities())); //auth user
             log.info("A user with this mail has confirmed it: " + user.getEmail());
@@ -124,7 +117,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateStatus(User user) {
-        userRepository2.update(user);
+        userRepository2.updateByStatus(user);
     }
 
     @Override
