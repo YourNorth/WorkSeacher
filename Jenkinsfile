@@ -28,7 +28,7 @@ pipeline {
         stage('Stop server'){
             steps{
                 sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker stop work_finder || true'
-                sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker rm work_finder || true'
+                sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker rm -f work_finder || true'
             }
         }
         stage('Deliver') { 
