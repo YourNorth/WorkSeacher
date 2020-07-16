@@ -41,6 +41,8 @@ public class CompaniesController {
     public String getCompany(@PathVariable("name") String name, Map<String, Object> model){
         Optional<Company> companies = companyService.findByName(name);
         if (companies.isPresent()){
+            //если роль - employer, то return "job_details_less"
+            //если роль - user, то return "job_details"
             model.put("companies", Collections.singletonList(companies.get()));
             return "job_details";
         }

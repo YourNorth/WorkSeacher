@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Service(value = "customUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
     private UserRepository userRepository;
 

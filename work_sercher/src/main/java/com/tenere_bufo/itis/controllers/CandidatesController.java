@@ -8,14 +8,13 @@ import com.tenere_bufo.itis.services.FeedbackForEmployerService;
 import com.tenere_bufo.itis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
@@ -34,9 +33,13 @@ public class CandidatesController {
     }
 
     @GetMapping("/candidate/{id}")
-    public String getUser(@PathVariable("id") Long id, Map<String, Object> model) {
+    public String getUser(@PathVariable("id") Long id, Map<String, Object> model, Authentication authentication) {
         Optional<User> users = userService.findById(id);
+        User user1 = (User) authentication.getAuthorities();
+        System.out.println(user1.getRoles());
         if (users.isPresent()) {
+            //если роль - employer, то return "candidate_details"
+            //если роль - user, то return "candidate_details_less"
             model.put("users", Collections.singletonList(users.get()));
             return "candidate_details";
         }
@@ -49,7 +52,7 @@ public class CandidatesController {
         feedback.setUpdated(new Date());
         feedback.setStatus(State.ACTIVE);
         feedback.setUser_id(id);
-        if (authentication != null){
+        if (authentication != null) {
             User user = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
             feedback.setWorker_id(user.getId());
             feedbackForEmployerService.save(feedback);
