@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class UserRepository2 {
     private static final String SQL_UPDATE_STATE = "update users set status = ? where token = ? ";
     //language=SQL
-    private static final String SQL_UPDATE_BY_EMAIL = "update users set age = ? and first_name = ? and lastName = ?" +
+    private static final String SQL_UPDATE_BY_EMAIL = "update users set age = ? and first_name = ? and last_name = ?" +
             "and description = ? and country = ? and city = ? and gender = ? and general_skill = ? and " +
             "education = ? and native_language = ? and link_img = ? where email = ?";
 
