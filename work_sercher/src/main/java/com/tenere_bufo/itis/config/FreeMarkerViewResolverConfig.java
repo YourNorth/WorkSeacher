@@ -16,6 +16,7 @@ public class FreeMarkerViewResolverConfig {
         viewResolver.setCache(true);
         viewResolver.setSuffix(".ftl");
         viewResolver.setRequestContextAttribute("rc");
+        viewResolver.setContentType("text/html;charset=UTF-8");
         viewResolver.setOrder(1);
         return viewResolver;
     }
@@ -24,6 +25,7 @@ public class FreeMarkerViewResolverConfig {
     public FreeMarkerConfigurer getFreemarkerConfig() {
         FreeMarkerConfigurer config = new FreeMarkerConfigurer();
         config.setTemplateLoaderPath("classpath:/templates");
+        config.setDefaultEncoding("UTF-8");
         return config;
     }
 }
