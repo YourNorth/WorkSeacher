@@ -1,19 +1,19 @@
 package com.tenere_bufo.itis.controllers;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
+@Controller
+public class MyExceptionController implements ErrorController {
 
-@ControllerAdvice
-public class MyExceptionController {
-
-    @ExceptionHandler(NoHandlerFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleError404(HttpServletRequest request, Exception e)   {
+    @RequestMapping("/error")
+    public String handleError() {
         return "404";
+    }
+
+    @Override
+    public String getErrorPath() {
+        return "/error";
     }
 }
