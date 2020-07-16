@@ -11,6 +11,7 @@
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -107,7 +108,7 @@
 <!--/ bradcam_area  -->
 
 <!-- catagory_area -->
-<form action="/candidate" method="post">
+<form action="/create_profile_candidate" method="post" id="form4">
     <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
@@ -152,7 +153,7 @@
                 </div>
                 <div class="col-lg-3 col-md-12">
                     <div class="reset_btn">
-                        <button  class="boxed-btn3 w-100" type="submit">Create my profile</button>
+                        <button  class="boxed-btn3 w-100" type="submit" onclick="return validateForm()">Create my profile</button>
                     </div>
                     <p></p>
                 </div>
@@ -163,12 +164,56 @@
             </div>
     </div>
 </form>
-<!--/ catagory_area -->
 
-<!-- featured_candidates_area_start  -->
-<!-- featured_candidates_area_end  -->
-
-
+<script>
+    function validateForm() {
+        let firstName = document.getElementById('firstName');
+        let lastName = document.getElementById('lastName');
+        let country = document.getElementById('country');
+        let city = document.getElementById('city');
+        let age = document.getElementById('age');
+        let general_skill = document.getElementById('general_skill');
+        let native_language = document.getElementById('native_language');
+        let description = document.getElementById('description');
+        let gender = document.getElementById('gender');
+        let error = '';
+        if (firstName.value.length < 6 || firstName.value.length > 50) {
+            error += 'First name must be between 6 and 50 characters! \n';
+        }
+        if (lastName.value.length < 6 || lastName.value.length > 50) {
+            error += 'Last name must be between 6 and 50 characters! \n';
+        }
+        if (country.value.length < 3 || country.value.length > 50) {
+            error += 'Country must be between 3 and 50 characters! \n';
+        }
+        if (city.value.length < 2 || city.value.length > 50) {
+            error += 'City must be between 2 and 50 characters! \n';
+        }
+        if (age.value < 12 || age.value > 100) {
+            error += 'Age must be between 12 and 100 characters! \n';
+        }
+        if (general_skill.value.length < 5 || general_skill.value.length > 50) {
+            error += 'General skill must be between 5 and 50 characters! \n';
+        }
+        if (native_language.value.length < 5 || native_language.value.length > 50) {
+            error += 'Native language must be between 5 and 50 characters! \n';
+        }
+        if (description.value.length < 12 || description.value.length > 255) {
+            error += 'Description must be between 12 and 255 characters! \n';
+        }
+        if (gender.value === "Gender"){
+            error += 'Gender field cannot be empty! \n';
+        }
+        if (error !== '') {
+            swal("Oops", error, "error");
+            return false;
+        } else {
+            swal("Good job!", 'Ok', "success");
+            let form = document.getElementById("form4");
+            form.submit();
+        }
+    }
+</script>
 
 <!-- footer start -->
 <footer class="footer">

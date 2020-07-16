@@ -11,6 +11,7 @@
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -108,13 +109,13 @@
 <!--/ bradcam_area  -->
 
 <!-- catagory_area -->
-<form action="/candidate" method="post">
+<form action="/create_profile_employer" method="post" id="form5">
     <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <input type="text" autocomplete="off" id="name" name="name" placeholder="Name">
+                        <input type="text" autocomplete="off" id="name" name="name" placeholder="Name company">
                     </div>
                     <p></p>
                     <div class="single_input">
@@ -122,8 +123,8 @@
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="number" min="12" max="100" autocomplete="off"
-                               id="amount" name="amount" placeholder="Amount" pattern="$[0-9]{1,10}" >
+                        <input type="number" min="1" max="1000000" autocomplete="off"
+                               id="amount" name="amount" placeholder="Amount in year">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
@@ -163,23 +164,57 @@
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
                         <div class="reset_btn">
-                                <button class="boxed-btn3 w-100" type="button">Create my profile</button>
+                                <button class="boxed-btn3 w-100" type="submit" onclick="return validateForm()">Create my profile</button>
                             </p>
                         </div>
                     </div>
                 </div>
-                <#--<div class="form-group col-lg-9 col-md-12">-->
-                <#--<label for="exampleFormControlTextarea1"></label>-->
-                <#--<textarea placeholder="Description" class="form-control" id="description" name="description"-->
-                <#--rows="10" cols="90"></textarea>-->
-                <#--</div>-->
             </div>
         </div>
 </form>
-<!--/ catagory_area -->
 
-<!-- featured_candidates_area_start  -->
-<!-- featured_candidates_area_end  -->
+<script>
+    function validateForm() {
+        let name = document.getElementById('name');
+        let location = document.getElementById('location');
+        let experience = document.getElementById('experience');
+        let amount = document.getElementById('amount');
+        let jobType = document.getElementById('jobType');
+        let category = document.getElementById('category');
+        let qualification = document.getElementById('qualification');
+        let error = '';
+        if (name.value.length < 2 || name.value.length > 50) {
+            error += 'Company name must be between 2 and 50 characters! \n';
+        }
+        if (amount.value < 1 || amount.value.length > 1000000) {
+            error += 'Amount must be between 1 and 1_000_000! \n';
+        }
+        if (location.value.length < 2 || location.value.length > 50) {
+            error += 'Location must be between 2 and 50 characters! \n';
+        }
+        if (experience.value === "Experience"){
+            error += 'Experience field cannot be empty! \n';
+        }
+        if (jobType.value === "Job type"){
+            error += 'Job type field cannot be empty! \n';
+        }
+        if (category.value === "Category"){
+            error += 'Category field cannot be empty! \n';
+        }
+        if (qualification.value === "Qualification"){
+            error += 'Qualification field cannot be empty! \n';
+        }
+        if (error !== '') {
+            swal("Oops", error, "error");
+            return false;
+        } else {
+            swal("Good job!", 'Ok', "success");
+            let form = document.getElementById("form5");
+            form.submit();
+        }
+    }
+</script>
+
 
 
 <!-- footer start -->
