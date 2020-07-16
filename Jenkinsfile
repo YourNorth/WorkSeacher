@@ -27,15 +27,15 @@ pipeline {
         }
         stage('Stop server'){
             steps{
-                sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker stop work_finder || true'
-                sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker rm -f work_finder || true'
+                sh 'DOCKER_HOST=/var/run/docker.sock docker stop work_finder || true'
+                sh 'DOCKER_HOST=/var/run/docker.sock docker rm -f work_finder || true'
             }
         }
         stage('Deliver') { 
             steps {
                 dir( 'work_sercher'){
                     sh 'mvn -B -DskipTests -Prelease package'
-                    sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker rmi -f springio/gs-spring-boot-docker || true'
+                    sh 'DOCKER_HOST=/var/run/docker.sock docker rmi -f springio/gs-spring-boot-docker || true'
                     sh 'DOCKER_HOST=/var/run/docker.sock mvn spring-boot:build-image -DskipTests -Prelease -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker'   
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
         stage('Start server'){
             steps{
                 //sh 'echo test'
-                sh 'sshpass -p "SidikovCrasavaqwert007" ssh developer@172.18.0.1 -o StrictHostKeyChecking=no -p 12 docker run --name work_finder --detach --volume /home/developer/keys/keystore.p12:/home/keys/keystore.p12 --network jenkins -p 443:443  -u root -t docker.io/springio/gs-spring-boot-docker'
+                sh 'DOCKER_HOST=/var/run/docker.sock docker run --name work_finder --detach --volume /home/developer/keys/keystore.p12:/home/keys/keystore.p12 --network jenkins -p 443:443  -u root -t docker.io/springio/gs-spring-boot-docker'
             }
         }
     }
