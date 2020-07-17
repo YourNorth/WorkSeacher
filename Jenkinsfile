@@ -36,7 +36,7 @@ pipeline {
                 dir( 'work_sercher'){
                     sh 'mvn -B -DskipTests -Prelease package'
                     sh 'DOCKER_HOST=unix:///var/run/host-docker.sock docker rmi -f springio/gs-spring-boot-docker || true'
-                    sh 'DOCKER_HOST=unix:///var/run/host-docker.sock mvn spring-boot:build-image -DskipTests -Prelease -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker'   
+                    sh 'DOCKER_HOST=/var/run/host-docker.sock mvn spring-boot:build-image -DskipTests -Prelease -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker'   
                 }
             }
         }	
