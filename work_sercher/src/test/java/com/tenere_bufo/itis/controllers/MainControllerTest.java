@@ -11,12 +11,9 @@ import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -31,7 +28,7 @@ class MainControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    @WithUserDetails("employer@company.com")
+    @WithUserDetails("user@company.com")
     void getElements() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/elements")
                 .accept(MediaType.ALL))
@@ -39,16 +36,18 @@ class MainControllerTest {
     }
 
     @Test
+    @WithUserDetails("user@company.com")
     void getBlog() throws Exception {
         this.mockMvc.perform(get("/blog"))
                 .andDo(print())
-                .andExpect(status().is3xxRedirection());
+                .andExpect(status().isOk());
     }
 
     @Test
+    @WithUserDetails("user@company.com")
     void getSingleBlog() throws Exception {
         this.mockMvc.perform(get("/single_blog"))
                 .andDo(print())
-                .andExpect(status().is3xxRedirection());
+                .andExpect(status().isOk());
     }
 }
