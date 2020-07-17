@@ -1,5 +1,6 @@
 package com.tenere_bufo.itis.model;
 
+import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "roles")
 @Data
+@Builder
 public class Role extends BaseEntity implements GrantedAuthority {
 
     @Column(name = "name")

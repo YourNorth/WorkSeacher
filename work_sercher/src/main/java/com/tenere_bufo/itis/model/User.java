@@ -1,6 +1,7 @@
 package com.tenere_bufo.itis.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Table(name = "users")
 @Getter
 @Setter
+@NoArgsConstructor
 public class User extends BaseEntity{
 
     @Column(name = "age")
@@ -62,6 +64,11 @@ public class User extends BaseEntity{
     inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     @Fetch(value = FetchMode.SELECT)
     private Set<Role> roles;
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     @Override
     public String toString() {

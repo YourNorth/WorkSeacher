@@ -5,8 +5,8 @@ import com.tenere_bufo.itis.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 import java.util.Collection;
+
 public class UserDetailsImpl implements UserDetails {
 
     private User user;
