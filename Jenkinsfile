@@ -2,7 +2,7 @@ pipeline {
     agent {
         dockerfile {
             filename '/home/maven-image/Dockerfile'
-            args '-u root -v /home/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/host-docker.sock -v /var/jenkins_home/:/var/jenkins_home/  --network jenkins'
+            args '-u root -v /home/developer/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/host-docker.sock -v jenkins-data:/var/jenkins_home/  --network jenkins'
         }
     }
     stages {
