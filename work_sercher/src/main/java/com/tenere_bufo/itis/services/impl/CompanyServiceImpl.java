@@ -25,6 +25,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public Optional<Company> findByEmail(String email) {
+        return companyRepository.findByEmail(email);
+    }
+
+    @Override
     public List<Company> findByLocation(String location) {
         return companyRepository.findByLocation(location);
     }
@@ -57,5 +62,10 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public List<Company> findAll() {
         return companyRepository.findAll();
+    }
+
+    @Override
+    public Company save(Company company) {
+        return companyRepository.save(company);
     }
 }

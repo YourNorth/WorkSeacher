@@ -28,4 +28,5 @@ public interface UserService {
 
     Optional<User> findByToken(String token);
     Optional<User> findById(Long id);
+    Optional<User> findByEmail(String email);
 }

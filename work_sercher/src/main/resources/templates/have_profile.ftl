@@ -117,12 +117,6 @@
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="reset_btn">
-                        <button  class="boxed-btn3 w-100">Create new</button>
-                    </div>
-                    <p></p>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="reset_btn">
                         <button  class="boxed-btn3 w-100">View profile</button>
                     </div>
                     <p></p>

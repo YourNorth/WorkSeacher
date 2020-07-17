@@ -9,6 +9,7 @@ import java.util.Optional;
 @Service
 public interface CompanyService {
     Optional<Company> findByName(String name);
+    Optional<Company> findByEmail(String email);
     List<Company> findByLocation(String location);
     List<Company> findByCategory(String category);
     List<Company> findByExperience(String experience);
@@ -16,4 +17,5 @@ public interface CompanyService {
     List<Company> findByQualification(String qualification);
     List<Company> findByGender(String gender);
     List<Company> findAll();
+    Company save(Company company);
 }
