@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
@@ -29,9 +30,11 @@ public class CreateProfileController {
     }
 
     @GetMapping("/create_profile")
-    public String getCreateProfile(){
-        //if(role = user) -> return "profile_candidate"
-        //if(role = employer) -> return "profile_work"
+    public String getCreateProfile(HttpServletRequest request){
+        if (request.isUserInRole("ROLE_USER"))                          //if(role = user) -> return "profile_candidate"
+            return "profile_candidate";
+        if (request.isUserInRole("ROLE_EMPLOYER"))                      //if(role = employer) -> return "profile_work"
+            return "profile_work";
         return "profile_candidate";
     }
 
