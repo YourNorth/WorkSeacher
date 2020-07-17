@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface UserService {
     void register(User user, String captchaResponse);
 
-    boolean confirm(String token, ModelMap model);
+    boolean confirm(String token);
 
     List<User> findAll();
 

@@ -67,7 +67,7 @@ public class SignUpController {
             //Attributes.addSuccessAttributes(model, "Are you registered! A confirmation email will be sent to your email!");
             Attributes.addSuccessAttributes(model, "OK!");
             userService.register(user, captchaResponse);
-            //emailService.sendConfirmation(user.getEmail(), user.getToken());
+            emailService.sendConfirmation(user);
             log.info("User registered: " + user.getEmail());
         }else{
             Attributes.addErrorAttributes(model, error);
