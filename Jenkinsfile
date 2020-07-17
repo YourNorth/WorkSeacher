@@ -2,7 +2,7 @@ pipeline {
     agent {
         dockerfile {
             filename '/home/maven-image/Dockerfile'
-            args '-v /home/.m2:/root/.m2 -v /home/maven-image/id_rsa:/root/.ssh/id_rsa -v /var/run/docker.sock:/var/run/docker.sock -v /var/jenkins_home/:/var/jenkins_home/ -v /certs/client:/certs/client --network host'
+            args '-v /home/.m2:/root/.m2 -v /home/maven-image/id_rsa:/root/.ssh/id_rsa -v /var/run/docker.sock:/var/run/docker.sock -v /var/jenkins_home/:/var/jenkins_home/ -v /certs/client:/certs/client --network jenkins'
         }
     }
     stages {
