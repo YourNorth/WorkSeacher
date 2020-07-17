@@ -16,23 +16,8 @@ public class MainController {
         return "blog";
     }
 
-    @GetMapping("/contact")
-    public String getContact(){
-        return "contact";
-    }
-
     @GetMapping("/single_blog")
     public String getSingleBlog(){
         return "single-blog";
-    }
-
-    @GetMapping("/profile_work")
-    public String getProfileForEmployer(){
-        return "profile_work";
-    }
-
-    @GetMapping("/have_profile")
-    public String checkProfile(){
-        return "have_profile";
     }
 }
