@@ -31,8 +31,7 @@
 
 <body>
 <!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-    your browser</a> to improve your experience and security.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
 <!-- header-start -->
@@ -100,7 +99,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="bradcam_text">
-                    <h3>Create profile for employer</h3>
+                    <h3>My profile</h3>
                 </div>
             </div>
         </div>
@@ -109,124 +108,22 @@
 <!--/ bradcam_area  -->
 
 <!-- catagory_area -->
-<form action="/create_profile_employer" method="post" id="form5">
+<form action="/create_profile" method="get" id="form4">
     <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
+                <div class="col-lg-3 col-md-12">
+                    <p>You don't have a profile yet..</p>
+                </div>
                 <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="name" name="name" placeholder="Name company">
+                    <div class="reset_btn">
+                        <button  class="boxed-btn3 w-100">Сreate profile</button>
                     </div>
                     <p></p>
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="location" name="location" placeholder="Location">
-                    </div>
-                    <p></p>
-                    <div class="single_input">
-                        <input type="number" min="1" max="1000000" autocomplete="off"
-                               id="amount" name="amount" placeholder="Amount in year">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <select id="category" name="category" class="wide">
-                            <option data-display="Experience">Experience</option>
-                            <option value="Java Developer">Java Developer</option>
-                            <option value="Python Developer">Python Developer</option>
-                            <option value="PHP Developer">PHP Developer</option>
-                        </select>
-                    </div>
-                    <div class="single_input">
-                        <select id="experience" name="experience" class="wide">
-                            <option data-display="Experience">Experience</option>
-                            <option value="Less 1 year">Less 1 year</option>
-                            <option value="More 1 year">More 1 year</option>
-                            <option value="More 3 years">More 3 years</option>
-                        </select>
-                    </div>
-                    <div class="single_input">
-                        <select id="jobType" name="jobType" class="wide">
-                            <option data-display="Job type">job Type</option>
-                            <option value="Full time">Full time</option>
-                            <option value="Part time">Part time</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <select id="qualification" name="qualification" class="wide">
-                            <option data-display="Qualification">Qualification</option>
-                            <option value="Programmer">Programmer</option>
-                            <option value="Tester">Tester</option>
-                        </select>
-                    </div>
-                    <div class="single_input">
-                        <select id="gender" name="gender" class="wide">
-                            <option data-display="Gender">Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <div class="reset_btn">
-                                <button class="boxed-btn3 w-100" type="submit" onclick="return validateForm()">Create my profile</button>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 </form>
-
-<script>
-    function validateForm() {
-        let name = document.getElementById('name');
-        let location = document.getElementById('location');
-        let experience = document.getElementById('experience');
-        let amount = document.getElementById('amount');
-        let jobType = document.getElementById('jobType');
-        let category = document.getElementById('category');
-        let qualification = document.getElementById('qualification');
-        let gender = document.getElementById('gender');
-        let error = '';
-        if (name.value.length < 2 || name.value.length > 50) {
-            error += 'Company name must be between 2 and 50 characters! \n';
-        }
-        if (amount.value < 1 || amount.value.length > 1000000) {
-            error += 'Amount must be between 1 and 1_000_000! \n';
-        }
-        if (location.value.length < 2 || location.value.length > 50) {
-            error += 'Location must be between 2 and 50 characters! \n';
-        }
-        if (experience.value === "Experience"){
-            error += 'Experience field cannot be empty! \n';
-        }
-        if (jobType.value === "Job type"){
-            error += 'Job type field cannot be empty! \n';
-        }
-        if (category.value === "Category"){
-            error += 'Category field cannot be empty! \n';
-        }
-        if (qualification.value === "Qualification"){
-            error += 'Qualification field cannot be empty! \n';
-        }
-        if (gender.value === "Gender"){
-            error += 'Gender field cannot be empty! \n';
-        }
-        if (error !== '') {
-            swal("Oops", error, "error");
-            return false;
-        } else {
-            swal("Good job!", 'Ok', "success");
-            let form = document.getElementById("form5");
-            form.submit();
-        }
-    }
-</script>
-
-
 
 <!-- footer start -->
 <footer class="footer">
@@ -347,6 +244,7 @@
 <script src="/js/jquery.magnific-popup.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/gijgo.min.js"></script>
+
 
 
 <!--contact js-->

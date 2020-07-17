@@ -39,8 +39,6 @@ public class CompaniesController {
     public String getCompany(@PathVariable("name") String name, Map<String, Object> model, HttpServletRequest request){
         Optional<Company> companies = companyService.findByName(name);
         if (companies.isPresent()){
-
-
             model.put("companies", Collections.singletonList(companies.get()));
             if (request.isUserInRole("ROLE_USER"))                  //если роль - user, то return "job_details"
                 return "job_details";

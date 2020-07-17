@@ -1,7 +1,6 @@
 package com.tenere_bufo.itis.controllers;
 
 import com.tenere_bufo.itis.model.FeedbackForEmployer;
-import com.tenere_bufo.itis.model.Role;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.security.details.UserDetailsImpl;
@@ -9,9 +8,6 @@ import com.tenere_bufo.itis.services.FeedbackForEmployerService;
 import com.tenere_bufo.itis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

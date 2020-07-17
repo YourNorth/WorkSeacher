@@ -54,6 +54,9 @@ public class CreateProfileController {
                 return "profile_work";
             }
         }
+        if(request.isUserInRole("ROLE_ADMIN")){
+            return "have_profile";
+        }
         return"profile_candidate";
     }
 
