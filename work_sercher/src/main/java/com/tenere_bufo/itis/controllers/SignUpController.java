@@ -65,7 +65,7 @@ public class SignUpController {
         }
         if (error.isEmpty()) {
             Attributes.addSuccessAttributes(model, "A confirmation letter will come to your mail soon!");
-            userService.register(user, captchaResponse);
+            userService.register(user);
             emailService.sendConfirmation(user);
             log.info("User registered: " + user.getEmail());
         }else{

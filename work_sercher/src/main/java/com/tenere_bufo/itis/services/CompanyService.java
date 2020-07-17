@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface CompanyService {
     Optional<Company> findByName(String name);
     Optional<Company> findByEmail(String email);
+    Optional<Company> findById(Long id);
     List<Company> findByLocation(String location);
     List<Company> findByCategory(String category);
     List<Company> findByExperience(String experience);
@@ -18,4 +19,5 @@ public interface CompanyService {
     List<Company> findByGender(String gender);
     List<Company> findAll();
     Company save(Company company);
+    void delete(Company company);
 }

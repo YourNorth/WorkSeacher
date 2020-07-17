@@ -30,6 +30,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public Optional<Company> findById(Long id) {
+        return companyRepository.findById(id);
+    }
+
+    @Override
     public List<Company> findByLocation(String location) {
         return companyRepository.findByLocation(location);
     }
@@ -67,5 +72,10 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company save(Company company) {
         return companyRepository.save(company);
+    }
+
+    @Override
+    public void delete(Company company) {
+        companyRepository.delete(company);
     }
 }
