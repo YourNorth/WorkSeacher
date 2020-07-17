@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
@@ -35,13 +36,16 @@ public class CompaniesController {
     }
 
     @GetMapping("/company/{name}")
-    public String getCompany(@PathVariable("name") String name, Map<String, Object> model){
+    public String getCompany(@PathVariable("name") String name, Map<String, Object> model, HttpServletRequest request){
         Optional<Company> companies = companyService.findByName(name);
         if (companies.isPresent()){
-            //если роль - employer, то return "job_details_less"
-            //если роль - user, то return "job_details"
+
+
             model.put("companies", Collections.singletonList(companies.get()));
-            return "job_details";
+            if (request.isUserInRole("ROLE_USER"))                  //если роль - user, то return "job_details"
+                return "job_details";
+            if (request.isUserInRole("ROLE_EMPLOYER"))              //если роль - employer, то return "job_details_less"
+                return "job_details_less";
         }
         return "jobs";
     }
