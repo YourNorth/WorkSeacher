@@ -2,7 +2,7 @@ pipeline {
     agent {
         dockerfile {
             filename '/home/maven-image/Dockerfile'
-            args '-v /home/.m2:/root/.m2 -v /home/maven-image/id_rsa:/root/.ssh/id_rsa -v /var/run/docker.sock:/var/run/docker.sock -v /var/jenkins_home/:/var/jenkins_home/ -v /certs/client:/certs/client --network jenkins'
+            args '-u root -v /home/.m2:/root/.m2 -v /home/maven-image/id_rsa:/root/.ssh/id_rsa -v /var/run/docker.sock:/var/run/host-docker.sock -v /var/jenkins_home/:/var/jenkins_home/ -v /certs/client:/certs/client --network jenkins'
         }
     }
     stages {
@@ -27,23 +27,23 @@ pipeline {
         }
         stage('Stop server'){
             steps{
-                sh 'DOCKER_HOST=unix:///var/run/docker.sock docker stop work_finder || true'
-                sh 'DOCKER_HOST=unix:///var/run/docker.sock docker rm -f work_finder || true'
+                sh 'DOCKER_HOST=unix:///var/run/host-docker.sock docker stop work_finder || true'
+                sh 'DOCKER_HOST=unix:///var/run/host-docker.sock docker rm -f work_finder || true'
             }
         }
         stage('Deliver') { 
             steps {
                 dir( 'work_sercher'){
                     sh 'mvn -B -DskipTests -Prelease package'
-                    sh 'DOCKER_HOST=unix:///var/run/docker.sock docker rmi -f springio/gs-spring-boot-docker || true'
-                    sh 'DOCKER_HOST=unix:///var/run/docker.sock mvn spring-boot:build-image -DskipTests -Prelease -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker'   
+                    sh 'DOCKER_HOST=unix:///var/run/host-docker.sock docker rmi -f springio/gs-spring-boot-docker || true'
+                    sh 'DOCKER_HOST=unix:///var/run/host-docker.sock mvn spring-boot:build-image -DskipTests -Prelease -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker'   
                 }
             }
         }	
         stage('Start server'){
             steps{
                 //sh 'echo test'
-                sh 'DOCKER_HOST=unix:///var/run/docker.sock docker run --restart unless-stopped --name work_finder --detach --volume /home/keys/keystore.p12:/home/keys/keystore.p12 --network host -p 443:443  -u root -t springio/gs-spring-boot-docker'
+                sh 'DOCKER_HOST=unix:///var/run/host-docker.sock docker run --restart unless-stopped --name work_finder --detach --volume /home/keys/keystore.p12:/home/keys/keystore.p12 --network host -p 443:443  -u root -t springio/gs-spring-boot-docker'
             }
         }
     }
