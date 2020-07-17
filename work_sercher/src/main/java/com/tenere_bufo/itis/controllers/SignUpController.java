@@ -64,7 +64,6 @@ public class SignUpController {
             error += "This mail is already taken! ";
         }
         if (error.isEmpty()) {
-            //Attributes.addSuccessAttributes(model, "Are you registered! A confirmation email will be sent to your email!");
             Attributes.addSuccessAttributes(model, "A confirmation letter will come to your mail soon!");
             userService.register(user, captchaResponse);
             emailService.sendConfirmation(user);

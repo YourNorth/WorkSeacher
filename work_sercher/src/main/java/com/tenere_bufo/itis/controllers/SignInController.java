@@ -1,8 +1,6 @@
 package com.tenere_bufo.itis.controllers;
 
-import com.tenere_bufo.itis.services.UserService;
 import com.tenere_bufo.itis.utils.Attributes;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
@@ -16,13 +14,6 @@ import java.util.logging.LogManager;
 
 @Controller
 public class SignInController {
-
-    private final UserService userService;
-
-    @Autowired
-    public SignInController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("/signIn")
     public String getSignIn(HttpServletRequest request, ModelMap modelMap, @RequestParam(value = "error", required = false) String error){
