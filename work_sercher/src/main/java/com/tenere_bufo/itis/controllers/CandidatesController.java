@@ -1,6 +1,7 @@
 package com.tenere_bufo.itis.controllers;
 
 import com.tenere_bufo.itis.model.FeedbackForEmployer;
+import com.tenere_bufo.itis.model.Role;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.security.details.UserDetailsImpl;
@@ -8,11 +9,15 @@ import com.tenere_bufo.itis.services.FeedbackForEmployerService;
 import com.tenere_bufo.itis.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
@@ -31,13 +36,14 @@ public class CandidatesController {
     }
 
     @GetMapping("/candidate/{id}")
-    public String getUser(@PathVariable("id") Long id, Map<String, Object> model, Authentication authentication) {
+    public String getUser(@PathVariable("id") Long id, Map<String, Object> model, HttpServletRequest request) {
         Optional<User> users = userService.findById(id);
         if (users.isPresent()) {
-            //если роль - employer, то return "candidate_details"
-            //если роль - user, то return "candidate_details_less"
             model.put("users", Collections.singletonList(users.get()));
-            return "candidate_details";
+            if (request.isUserInRole("ROLE_USER"))                  //если роль - user, то return "candidate_details_less"
+                return "candidate_details_less";
+            if (request.isUserInRole("ROLE_EMPLOYER"))              //если роль - employer, то return "candidate_details"
+                return "candidate_details";
         }
         return "candidate";
     }

@@ -1,6 +1,8 @@
 package com.tenere_bufo.itis.model;
 
 import lombok.Data;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
