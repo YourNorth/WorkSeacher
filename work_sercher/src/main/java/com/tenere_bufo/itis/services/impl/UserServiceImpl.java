@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
         }
         String hashPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashPassword);
-        user.setStatus(State.ACTIVE);
+        user.setStatus(State.NOT_ACTIVE);
         user.setToken(generateNewToken());
         user.setCreated(new Date());
         user.setUpdated(new Date());
@@ -81,12 +81,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public boolean confirm(String token, ModelMap model) {
-        User user = findByToken(token).orElse(null);
-        if (user != null) {
-            userRepository2.updateByStatus(user);
-            UserDetailsImpl userDetails = new UserDetailsImpl(user);
-            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities())); //auth user
+    public boolean confirm(String token) {
+        Optional<User> optionalUser = findByToken(token);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setStatus(State.ACTIVE);
+            updateStatus(user);
             log.info("A user with this mail has confirmed it: " + user.getEmail());
             return true;
         } else {
