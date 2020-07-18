@@ -4,20 +4,15 @@ import com.tenere_bufo.itis.model.Role;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.repository.UserRepository;
-import com.tenere_bufo.itis.repository.UserRepository2;
-import com.tenere_bufo.itis.security.details.UserDetailsImpl;
 import com.tenere_bufo.itis.services.RolesService;
 import com.tenere_bufo.itis.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -35,17 +30,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RestTemplate restTemplate;
-    private final UserRepository2 userRepository2;
     private final RolesService rolesService;
     private final AuthenticationManager authenticationManager;
 
 
     @Autowired
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, RestTemplate restTemplate, UserRepository2 userRepository2, RolesService rolesService, AuthenticationManager authenticationManager) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, RestTemplate restTemplate, RolesService rolesService, AuthenticationManager authenticationManager) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.restTemplate = restTemplate;
-        this.userRepository2 = userRepository2;
         this.rolesService = rolesService;
         this.authenticationManager=authenticationManager;
     }
@@ -117,7 +110,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateStatus(User user) {
-        userRepository2.updateByStatus(user);
+        userRepository.updateStatusByToken(user.getToken(), State.ACTIVE);
     }
 
     @Override

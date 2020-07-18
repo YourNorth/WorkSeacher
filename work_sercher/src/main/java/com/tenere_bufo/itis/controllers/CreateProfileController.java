@@ -4,7 +4,6 @@ import com.tenere_bufo.itis.model.Company;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.repository.UserRepository;
-import com.tenere_bufo.itis.repository.UserRepository2;
 import com.tenere_bufo.itis.security.details.UserDetailsImpl;
 import com.tenere_bufo.itis.services.CompanyService;
 import com.tenere_bufo.itis.services.UserService;
