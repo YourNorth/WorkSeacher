@@ -102,6 +102,7 @@
                             <h5 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">4536+ Jobs listed</h5>
                             <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">Find your Dream Job</h3>
                             <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">We provide online instant cash loans with quick approval that suit your term length</p>
+                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">To exit paste this into in URL: https://sirosh.dev/logout </p>
                             <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
                                 <a href="/create_profile" class="boxed-btn3">Upload your Resume</a>
                             </div>
