@@ -59,7 +59,7 @@
                                           </li>
                                           <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                               <ul class="submenu">
-                                                  <li><a href="blog.ftl">blog</a></li>
+                                                  <li><a href="/blog">blog</a></li>
                                                   <li><a href="/single_blog">single-blog</a></li>
                                               </ul>
                                           </li>
