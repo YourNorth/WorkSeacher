@@ -36,9 +36,11 @@ public class CandidatesController {
         Optional<User> users = userService.findById(id);
         if (users.isPresent()) {
             model.put("users", Collections.singletonList(users.get()));
-            if (request.isUserInRole("ROLE_USER"))                  //если роль - user, то return "candidate_details_less"
+            if (request.isUserInRole("ROLE_USER"))
                 return "candidate_details_less";
-            if (request.isUserInRole("ROLE_EMPLOYER"))              //если роль - employer, то return "candidate_details"
+            if (request.isUserInRole("ROLE_EMPLOYER"))
+                return "candidate_details";
+            if (request.isUserInRole("ROLE_ADMIN"))
                 return "candidate_details";
         }
         return "candidate";

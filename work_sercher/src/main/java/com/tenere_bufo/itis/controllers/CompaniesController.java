@@ -40,10 +40,12 @@ public class CompaniesController {
         Optional<Company> companies = companyService.findByName(name);
         if (companies.isPresent()){
             model.put("companies", Collections.singletonList(companies.get()));
-            if (request.isUserInRole("ROLE_USER"))                  //если роль - user, то return "job_details"
+            if (request.isUserInRole("ROLE_USER"))
                 return "job_details";
-            if (request.isUserInRole("ROLE_EMPLOYER"))              //если роль - employer, то return "job_details_less"
+            if (request.isUserInRole("ROLE_EMPLOYER"))
                 return "job_details_less";
+            if (request.isUserInRole("ROLE_ADMIN"))
+                return "job_details";
         }
         return "jobs";
     }
