@@ -28,7 +28,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public void sendConfirmation(User user) {
-        String mailText = "<a href='http://localhost:8080/token/" + user.getToken() + "'>" + textRight + "</a>";
+        String mailText = "<a href='https://sirosh.dev/token/" + user.getToken() + "'>" + textRight + "</a>";
 
         sender.send(subjectEmail, mailText, user.getEmail());
         log.info("The user with this mail sent a confirmation message: " + user.getEmail());
