@@ -3,7 +3,7 @@ package com.tenere_bufo.itis.controllers;
 import com.tenere_bufo.itis.model.Company;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
-import com.tenere_bufo.itis.repository.UserRepository2;
+import com.tenere_bufo.itis.repository.UserRepository;
 import com.tenere_bufo.itis.security.details.UserDetailsImpl;
 import com.tenere_bufo.itis.services.CompanyService;
 import com.tenere_bufo.itis.services.UserService;
@@ -23,13 +23,13 @@ import java.util.Optional;
 public class CreateProfileController {
 
     private final CompanyService companyService;
-    private final UserRepository2 userRepository2;
+    private final UserRepository userRepository;
     private final UserService userService;
 
     @Autowired
-    public CreateProfileController(CompanyService companyService, UserRepository2 userRepository2, UserService userService) {
+    public CreateProfileController(CompanyService companyService, UserRepository userRepository, UserService userService) {
         this.companyService = companyService;
-        this.userRepository2 = userRepository2;
+        this.userRepository = userRepository;
         this.userService = userService;
     }
 
@@ -65,8 +65,11 @@ public class CreateProfileController {
     public String createProfileForCandidate(User user, Authentication authentication) {
         System.out.println(user);
         if (authentication != null) {
-            User u = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
-            userRepository2.updateByEmail(user, u.getEmail());
+            User userAuth = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
+            userAuth.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
+            userRepository.updateByEmail(userAuth.getEmail(),user.getAge(),user.getFirstName(),user.getLastName(),
+                    user.getDescription(),user.getCountry(),user.getCity(),user.getGender(),user.getGeneral_skill(),
+                    user.getEducation(),user.getNative_language(),user.getLink_img());
         }
         return "profile_candidate";
     }

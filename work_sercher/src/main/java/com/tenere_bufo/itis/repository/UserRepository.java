@@ -1,9 +1,14 @@
 package com.tenere_bufo.itis.repository;
 
+import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Repository
@@ -11,4 +16,31 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
     Optional<User> findByToken(String token);
     Optional<User> findById(Long id);
+
+    @Transactional
+    @Modifying
+    @Query("update User set status = :status where token = :token")
+    public void updateStatusByToken(String token,State status) ;
+
+    @Transactional
+    @Modifying
+    @Query("update User " +
+            "set age = :age, " +
+            "firstName = :firstName," +
+            "lastName = :lastName," +
+            "description = :description," +
+            "country = :country," +
+            "city = :city," +
+            "gender = :gender," +
+            "general_skill = :generalSkill," +
+            "education = :education," +
+            "native_language = :nativeLanguage," +
+            "link_img = :linkImg " +
+            "where email = :email")
+    public void updateByEmail(String email, Integer age, String firstName, String lastName,
+                           String description, String country, String city, String gender,
+                           String generalSkill, String education, String nativeLanguage,
+                           String linkImg);
+
+
 }
