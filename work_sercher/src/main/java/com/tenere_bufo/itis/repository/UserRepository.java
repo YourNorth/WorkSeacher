@@ -19,7 +19,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Transactional
     @Modifying
-    @Query("update User set status = :status where token = :token")
+    @Query("update User set status = :status, updated = CURRENT_TIMESTAMP where token = :token")
     public void updateStatusByToken(String token,State status) ;
 
     @Transactional
@@ -35,7 +35,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "general_skill = :generalSkill," +
             "education = :education," +
             "native_language = :nativeLanguage," +
-            "link_img = :linkImg " +
+            "link_img = :linkImg," +
+            "updated = CURRENT_TIMESTAMP " +
             "where email = :email")
     public void updateByEmail(String email, Integer age, String firstName, String lastName,
                            String description, String country, String city, String gender,
