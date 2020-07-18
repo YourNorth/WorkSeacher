@@ -66,11 +66,11 @@ public class CreateProfileController {
     public String createProfileForCandidate(User user, Authentication authentication) {
         System.out.println(user);
         if (authentication != null) {
-            User u = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
-            u.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
-            userRepository.updateByEmail(u.getEmail(),u.getAge(),u.getFirstName(),u.getLastName(),
-                    u.getDescription(),u.getCountry(),u.getCity(),u.getGender(),u.getGeneral_skill(),
-                    u.getEducation(),u.getNative_language(),u.getLink_img());
+            User userAuth = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
+            userAuth.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
+            userRepository.updateByEmail(userAuth.getEmail(),user.getAge(),user.getFirstName(),user.getLastName(),
+                    user.getDescription(),user.getCountry(),user.getCity(),user.getGender(),user.getGeneral_skill(),
+                    user.getEducation(),user.getNative_language(),user.getLink_img());
         }
         return "profile_candidate";
     }

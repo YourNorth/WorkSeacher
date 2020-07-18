@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Repository
@@ -16,28 +17,30 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByToken(String token);
     Optional<User> findById(Long id);
 
+    @Transactional
     @Modifying
-    @Query("update users set status = :status where token = :token")
-    public void updateStatusByToken(@Param("token") String token, @Param("status")State status) ;
+    @Query("update User set status = :status where token = :token")
+    public void updateStatusByToken(String token,State status) ;
 
+    @Transactional
     @Modifying
-    @Query("update users " +
+    @Query("update User " +
             "set age = :age, " +
-            "first_name = :first_name," +
-            "last_name = :last_name," +
+            "firstName = :firstName," +
+            "lastName = :lastName," +
             "description = :description," +
             "country = :country," +
             "city = :city," +
             "gender = :gender," +
-            "general_skill = :general_skill," +
+            "general_skill = :generalSkill," +
             "education = :education," +
-            "native_language = :native_language," +
-            "link_img = :link_img " +
+            "native_language = :nativeLanguage," +
+            "link_img = :linkImg " +
             "where email = :email")
     public void updateByEmail(String email, Integer age, String firstName, String lastName,
                            String description, String country, String city, String gender,
-                           String general_skill, String education, String native_language,
-                           String link_img);
+                           String generalSkill, String education, String nativeLanguage,
+                           String linkImg);
 
 
 }
