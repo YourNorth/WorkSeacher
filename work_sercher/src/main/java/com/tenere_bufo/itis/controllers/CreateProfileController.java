@@ -3,6 +3,7 @@ package com.tenere_bufo.itis.controllers;
 import com.tenere_bufo.itis.model.Company;
 import com.tenere_bufo.itis.model.State;
 import com.tenere_bufo.itis.model.User;
+import com.tenere_bufo.itis.repository.UserRepository;
 import com.tenere_bufo.itis.repository.UserRepository2;
 import com.tenere_bufo.itis.security.details.UserDetailsImpl;
 import com.tenere_bufo.itis.services.CompanyService;
@@ -23,13 +24,13 @@ import java.util.Optional;
 public class CreateProfileController {
 
     private final CompanyService companyService;
-    private final UserRepository2 userRepository2;
+    private final UserRepository userRepository;
     private final UserService userService;
 
     @Autowired
-    public CreateProfileController(CompanyService companyService, UserRepository2 userRepository2, UserService userService) {
+    public CreateProfileController(CompanyService companyService, UserRepository userRepository, UserService userService) {
         this.companyService = companyService;
-        this.userRepository2 = userRepository2;
+        this.userRepository = userRepository;
         this.userService = userService;
     }
 
@@ -66,7 +67,10 @@ public class CreateProfileController {
         System.out.println(user);
         if (authentication != null) {
             User u = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
-            userRepository2.updateByEmail(user, u.getEmail());
+            u.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
+            userRepository.updateByEmail(u.getEmail(),u.getAge(),u.getFirstName(),u.getLastName(),
+                    u.getDescription(),u.getCountry(),u.getCity(),u.getGender(),u.getGeneral_skill(),
+                    u.getEducation(),u.getNative_language(),u.getLink_img());
         }
         return "profile_candidate";
     }
