@@ -66,7 +66,7 @@ public class CreateProfileController {
         System.out.println(user);
         if (authentication != null) {
             User userAuth = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
-            userAuth.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
+            user.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
             userRepository.updateByEmail(userAuth.getEmail(),user.getAge(),user.getFirstName(),user.getLastName(),
                     user.getDescription(),user.getCountry(),user.getCity(),user.getGender(),user.getGeneral_skill(),
                     user.getEducation(),user.getNative_language(),user.getLink_img());

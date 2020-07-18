@@ -141,6 +141,10 @@
                     <div class="single_input">
                         <input type="text" autocomplete="off" id="native_language" name="native_language" placeholder="Native language">
                     </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="education" name="education" placeholder="Education">
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
@@ -176,6 +180,7 @@
         let native_language = document.getElementById('native_language');
         let description = document.getElementById('description');
         let gender = document.getElementById('gender');
+        let education = document.getElementById('education');
         let error = '';
         if (firstName.value.length < 2 || firstName.value.length > 50) {
             error += 'First name must be between 2 and 50 characters! \n';
@@ -200,6 +205,9 @@
         }
         if (description.value.length < 12 || description.value.length > 255) {
             error += 'Description must be between 12 and 255 characters! \n';
+        }
+        if (education.value.length < 3 || education.value.length > 50) {
+            error += 'Education must be between 3 and 50 characters! \n';
         }
         if (gender.value === "Gender"){
             error += 'Gender field cannot be empty! \n';
