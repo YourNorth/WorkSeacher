@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+!/src/main/java/com/tenere_bufo/itis/services/BlogService.java
+!/src/main/java/com/tenere_bufo/itis/services/impl/BlogServiceImpl.java
+!/src/main/java/com/tenere_bufo/itis/controllers/BlogController.java
+!/src/main/resources/templates/blog_test.ftl
+!/src/main/resources/templates/blog_creating.ftl

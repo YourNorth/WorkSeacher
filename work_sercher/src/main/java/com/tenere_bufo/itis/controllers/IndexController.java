@@ -22,7 +22,7 @@ public class IndexController {
         this.companyService = companyService;
     }
 
-    @GetMapping("/index")
+    @GetMapping({"/","/index"})
     public String getIndex(Map<String, Object> model){
         List<Company> companiesAll = companyService.findAll();
         List<Company> companies = IntStream.range(0, 5).mapToObj(companiesAll::get).collect(Collectors.toList());
