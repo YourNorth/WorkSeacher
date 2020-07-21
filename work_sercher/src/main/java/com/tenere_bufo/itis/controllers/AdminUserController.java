@@ -45,27 +45,14 @@ public class AdminUserController {
         return "admin_user";
     }
 
-    @PostMapping("/user/add")
-    public ResponseEntity<User> addUser(@RequestBody @Valid User user, HttpServletRequest request) {
-        if (checkOnRoleAdmin(request)){
-            userService.register(user);
-            return ResponseEntity.ok().build();
-        } else{
-            return ResponseEntity.status(403).build();
-        }
-    }
-
     @PostMapping("/user/delete")
-    public ResponseEntity<User> deleteUser(@RequestBody User user, HttpServletRequest request){
-        if (checkOnRoleAdmin(request)){
-            userService.delete(user);
-            return ResponseEntity.ok().build();
-        }else {
-            return ResponseEntity.status(403).build();
+    public String deleteCompany(@RequestParam(value = "keyword") Long id) {
+        log.info("request param is "+ id);
+        if(id!=null){
+            Optional<User> company = userService.findById(id);
+            company.ifPresent(userService::delete);
+            log.info("та простит меня господь, но мне лень сейчас писать апдейт");
         }
-    }
-
-    private boolean checkOnRoleAdmin(HttpServletRequest request){
-        return request.isUserInRole("ROLE_ADMIN");
+        return "redirect:/user";
     }
 }

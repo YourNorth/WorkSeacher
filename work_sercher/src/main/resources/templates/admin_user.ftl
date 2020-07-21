@@ -24,13 +24,17 @@
 <div>
     <#list users as user>
         <span>${user.id}    ${user.email}
-            <#--<script>
-                id: JSON.stringify({ company_id: ${company.id})
-            </script>
-        <form action="/comp/delete" method="post">
-            <input id="${company.id}" type="button" value="delete"/>
-        </form>-->
-    </span><br>
+            <form action="/user/delete" method="post">
+        <input type="hidden" name="keyword" value="${user.id}">
+        <input type="submit" value="delete"/>
+    </form>
+    </span><br><br>
+    <#--<script>
+        id: JSON.stringify({ company_id: ${company.id})
+    </script>
+<form action="/comp/delete" method="post">
+    <input id="${company.id}" type="button" value="delete"/>
+</form>-->
     </#list>
 </div>
 </body>
