@@ -47,7 +47,7 @@ public class AdminCompanyController {
         return "admin_company";
     }
 
-    @PostMapping("/comp/add")
+   /* @PostMapping("/comp/add")
     public ResponseEntity<Company> addCompany(@RequestBody @Valid Company company, HttpServletRequest request) {
         if (checkOnRoleAdmin(request)) {
             companyService.save(company);
@@ -55,20 +55,22 @@ public class AdminCompanyController {
         } else {
             return ResponseEntity.status(403).build();
         }
-    }
+    }*/
 
     @PostMapping("/comp/delete")
-    public ResponseEntity<Company> deleteCompany(@ModelAttribute Long id) {
+    public String deleteCompany(@RequestParam(value = "keyword") Long id) {
+        log.info("request param is "+ id);
         /*if (checkOnRoleAdmin(request)) {
             companyService.delete(company);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.status(403).build();
         }*/
-        return null;
-    }
-
-    private boolean checkOnRoleAdmin(HttpServletRequest request) {
-        return request.isUserInRole("ROLE_ADMIN");
+        if(id!=null){
+        Optional<Company> company = companyService.findById(id);
+        company.ifPresent(companyService::delete);
+        log.info("та простит меня господь, но мне лень сейчас писать апдейт");
+        }
+        return "redirect:/comp";
     }
 }

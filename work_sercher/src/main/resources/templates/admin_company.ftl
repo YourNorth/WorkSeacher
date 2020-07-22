@@ -14,21 +14,12 @@
 <div>
     <#list companies as company>
     <span>${company.id}    ${company.name}
-    <#--<form action="/comp/delete" method="post">
-        <input id="${company.id}" type="button" value="delete" onClick="deleteComp(this)"/>
-    </form>-->
-    </span><br>
+    <form action="/comp/delete" method="post">
+        <input type="hidden" name="keyword" value="${company.id}">
+        <input type="submit" value="delete" />
+    </form>
+    </span><br><br>
 </#list>
-<#--<script>
-     function deleteComp(obj) {
-        let id = obj.id;
-     }
-     result = JSON.stringify(id);
-     var url = "/comp/delete" + new Date().getTime();
-     request.open("POST", url, true);
-     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-     request.send(result);
-</script>-->
 </div>
 </body>
 </html>
