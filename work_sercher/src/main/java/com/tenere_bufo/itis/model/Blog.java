@@ -1,31 +1,29 @@
 package com.tenere_bufo.itis.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "blogs")
-public class Blog extends BaseEntity{
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Blog {
 
-    @Column(name = "day")
-    private Integer day;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "month")
-    private String month;
-
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "head_text")
-    private String head_text;
-
-    @Column(name = "topic")
-    private String topic;
-
-    @Column(name = "text", length = 10000)
     private String text;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 }

@@ -11,13 +11,13 @@ public class MainController {
         return "elements";
     }
 
-    @GetMapping("/blog")
-    public String getBlog(){
-        return "blog";
-    }
+//    @GetMapping("/blog")
+//    public String getBlog(){
+//        return "blog";
+//    }
 
-    @GetMapping("/single_blog")
-    public String getSingleBlog(){
-        return "single-blog";
-    }
+//    @GetMapping("/single_blog")
+//    public String getSingleBlog(){
+//        return "single-blog";
+//    }
 }

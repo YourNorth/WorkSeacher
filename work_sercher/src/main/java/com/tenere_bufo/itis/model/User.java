@@ -7,6 +7,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -69,6 +70,10 @@ public class User extends BaseEntity{
         this.email = email;
         this.password = password;
     }
+
+    @OneToMany (mappedBy = "user")
+    @Fetch(value = FetchMode.SELECT)
+    private List<Blog> blogs;
 
     @Override
     public String toString() {
