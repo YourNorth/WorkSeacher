@@ -51,12 +51,6 @@ public class AdminCompanyController {
 
     @PostMapping("/comp/delete")
     public String deleteCompany(@RequestParam(value = "keyword") String keyword) {
-        /*if (checkOnRoleAdmin(request)) {
-            companyService.delete(company);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.status(403).build();
-        }*/
         if (idChecking(keyword) != null) {
             Optional<Company> company = companyService.findById(idChecking(keyword));
             company.ifPresent(companyService::delete);//fixme update!
