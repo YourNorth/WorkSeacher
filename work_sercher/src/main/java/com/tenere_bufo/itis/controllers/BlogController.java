@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class BlogController {
@@ -49,7 +47,9 @@ public class BlogController {
             System.out.println("picture id is not present");
         }
 
-        blogRepository.save(Blog.builder().name(blogPostDto.getPostName()).text(blogPostDto.getPostText()).user(user).picture_id(pictureId).build());
+        Date date=Calendar.getInstance().getTime();
+
+        blogRepository.save(Blog.builder().name(blogPostDto.getPostName()).text(blogPostDto.getPostText()).user(user).picture_id(pictureId).date(date).build());
 
         return "redirect:/blog";
     }
@@ -64,18 +64,17 @@ public class BlogController {
     @GetMapping("/blog/{id}")
     public String getBlockPageById(@PathVariable Long id, Model model) {
         try {
-            List<Blog> blogs = new ArrayList<>();
-            blogs.add(blogRepository.findById(id).get());
-            model.addAttribute("blogs",blogs);
+            Blog blog = blogRepository.findById(id).get();
+            model.addAttribute("blog",blog);
         }
         catch (Exception e) {
             System.out.println(e);
         }
-        return "blog";
+        return "single_blog";
     }
 
     @GetMapping("/single_blog")
     public String getSingleBlog(){
-        return "single-blog";
+        return "single_blog";
     }
 }
