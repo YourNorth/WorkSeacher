@@ -108,7 +108,7 @@
 <!--/ bradcam_area  -->
 
 <!-- catagory_area -->
-<form action="/create_blog" method="post" id="form4">
+<form action="/create_blog" method="post" id="form4" enctype="multipart/form-data">
     <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
@@ -129,7 +129,6 @@
                     <textarea placeholder="Your awesome text here" class="form-control" id="postText" name="postText" rows="10" cols="90"></textarea>
                 </div>
                     Upload File: <input type="file" name="file">
-                    <br/><br/><input type="submit">
             </div>
         </div>
     </div>

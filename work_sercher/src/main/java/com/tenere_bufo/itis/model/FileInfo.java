@@ -22,4 +22,6 @@ public class FileInfo {
     private String originalFileName;
     private Long size;
     private String type;
+
+
 }

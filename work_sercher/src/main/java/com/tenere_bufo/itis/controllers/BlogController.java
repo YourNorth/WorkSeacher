@@ -39,11 +39,17 @@ public class BlogController {
     public String createBlogPost(BlogPostDto blogPostDto, @RequestParam("file") MultipartFile multipartFile, Authentication authentication){
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         User user = userDetails.getUser();
-        blogRepository.save(Blog.builder().name(blogPostDto.getPostName()).text(blogPostDto.getPostText()).user(user).build());
 
+        Long pictureId;
         if (!multipartFile.isEmpty()) {
             Optional<FileInfo> optionalFileInfo = fileService.fileSave(multipartFile);
+            pictureId = optionalFileInfo.get().getId();
+        } else {
+            pictureId = null;
+            System.out.println("picture id is not present");
         }
+
+        blogRepository.save(Blog.builder().name(blogPostDto.getPostName()).text(blogPostDto.getPostText()).user(user).picture_id(pictureId).build());
 
         return "redirect:/blog";
     }

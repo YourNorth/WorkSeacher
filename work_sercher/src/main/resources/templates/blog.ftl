@@ -115,7 +115,13 @@
                         <#list blogs as blog>
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="/files/7" alt="">
+                                <#if blog.picture_id??>
+                                    <img class="card-img rounded-0" src="/files/${blog.picture_id}" alt="">
+                                    <#else>
+                                        <img class="card-img rounded-0" src="/files/7" alt="">
+                                </#if>
+
+
                                 <a href="#" class="blog_item_date">
                                     <h3>15</h3>
                                     <p>Jan</p>
@@ -162,7 +168,7 @@
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <div class="d-none d-lg-block">
-                                <a class="boxed-btn3" href="/create_profile">Create post</a>
+                                <a class="boxed-btn3" href="/create_blog">Create post</a>
                             </div>
                         </aside>
 

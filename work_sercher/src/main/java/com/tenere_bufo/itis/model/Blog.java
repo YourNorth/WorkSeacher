@@ -26,4 +26,6 @@ public class Blog {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+
+    private Long picture_id;
 }

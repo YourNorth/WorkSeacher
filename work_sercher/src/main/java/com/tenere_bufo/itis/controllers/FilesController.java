@@ -55,7 +55,7 @@ public class FilesController {
 
         Optional<FileInfo> optionalFileInfo = fileService.getFile(id);
         if (optionalFileInfo.isPresent()) {
-            File file = new File(uploadsDir + "/" + optionalFileInfo.get().getStorageFileName());
+            File file = new File(uploadsDir + "/" + optionalFileInfo.get().getId());
             response.addHeader("content-type", optionalFileInfo.get().getType());
             try {
                 InputStream is = new FileInputStream(file);
