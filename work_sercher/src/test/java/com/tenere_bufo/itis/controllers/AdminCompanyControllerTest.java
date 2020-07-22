@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -29,15 +30,15 @@ class AdminCompanyControllerTest {
     @Test
     @WithUserDetails("admin@company.com")
     void getCompany() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/comp/5")
-                .accept(MediaType.ALL))
+        mockMvc.perform(MockMvcRequestBuilders.get("/comp?keyword=5"))
+                .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
     @WithUserDetails("admin@company.com")
     void getCompanies() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/comp/all")
+        mockMvc.perform(MockMvcRequestBuilders.get("/comp?keyword=all")
                 .accept(MediaType.ALL))
                 .andExpect(status().isOk());
     }

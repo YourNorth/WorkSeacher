@@ -72,7 +72,7 @@ public class User extends BaseEntity{
         this.password = password;
     }
 
-    @OneToMany (mappedBy = "user")
+    @OneToMany (mappedBy = "user", cascade= CascadeType.ALL, fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SELECT)
     private List<Blog> blogs;
 

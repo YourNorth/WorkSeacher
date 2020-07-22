@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         classes = SpringSecurityWebAuxTestConfig.class
 )
 @AutoConfigureMockMvc
-class AdminUserControllerTest {
+class   AdminUserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -29,7 +29,7 @@ class AdminUserControllerTest {
     @Test
     @WithUserDetails("admin@company.com")
     void getUser() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/5")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user?keyword=800")
                 .accept(MediaType.ALL))
                 .andExpect(status().isOk());
     }
