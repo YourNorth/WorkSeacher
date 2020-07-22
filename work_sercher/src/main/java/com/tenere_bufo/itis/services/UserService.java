@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface UserService {
     void register(User user);
 
+    void registerByAdmin(User user);
+
     boolean confirm(String token);
 
     List<User> findAll();
@@ -22,6 +24,7 @@ public interface UserService {
     void add(User user);
 
     void updateStatus(User user);
+
 
     Optional<User> findByToken(String token);
     Optional<User> findById(Long id);

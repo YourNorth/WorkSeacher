@@ -1,19 +1,17 @@
 package com.tenere_bufo.itis.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
 @NoArgsConstructor
+@ToString
 public class User extends BaseEntity{
 
     @Column(name = "age")
@@ -65,28 +63,11 @@ public class User extends BaseEntity{
     @Fetch(value = FetchMode.SELECT)
     private Set<Role> roles;
 
+    @Transient
+    private  String roleFromForm;
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "age=" + age +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", description='" + description + '\'' +
-                ", country='" + country + '\'' +
-                ", city='" + city + '\'' +
-                ", gender='" + gender + '\'' +
-                ", token='" + token + '\'' +
-                ", general_skill='" + general_skill + '\'' +
-                ", education='" + education + '\'' +
-                ", native_language='" + native_language + '\'' +
-                ", link_img='" + link_img + '\'' +
-                '}';
     }
 }

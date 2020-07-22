@@ -1,15 +1,18 @@
 package com.tenere_bufo.itis.services.impl;
 
 import com.tenere_bufo.itis.model.Company;
+import com.tenere_bufo.itis.model.Role;
+import com.tenere_bufo.itis.model.State;
+import com.tenere_bufo.itis.model.User;
 import com.tenere_bufo.itis.repository.CompanyRepository;
 import com.tenere_bufo.itis.services.CompanyService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+@Slf4j
 @Service
 public class CompanyServiceImpl implements CompanyService {
 
@@ -29,6 +32,7 @@ public class CompanyServiceImpl implements CompanyService {
     public Optional<Company> findByEmail(String email) {
         return companyRepository.findByEmail(email);
     }
+
 
     @Override
     public Optional<Company> findById(Long id) {
@@ -78,5 +82,15 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void delete(Company company) {
         companyRepository.delete(company);
+    }
+
+    @Override
+    public void registerByAdmin(Company company) {
+        //name,amount,category,experience, gender,job_type,link_img,location,qualification
+        company.setStatus(State.ACTIVE);
+        company.setCreated(new Date());
+        company.setUpdated(new Date());
+        Company registeredCompany = companyRepository.save(company);
+        log.info("IN register - company: {} successfully registered by admin", registeredCompany);
     }
 }

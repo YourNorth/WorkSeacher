@@ -1,6 +1,7 @@
 package com.tenere_bufo.itis.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "companies")
+@ToString
 public class Company extends BaseEntity{
 
     @Column(name = "name")

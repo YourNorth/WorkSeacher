@@ -1,19 +1,12 @@
 package com.tenere_bufo.itis.controllers;
 
-import com.tenere_bufo.itis.model.Company;
 import com.tenere_bufo.itis.model.User;
-import com.tenere_bufo.itis.services.CompanyService;
 import com.tenere_bufo.itis.services.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -31,12 +24,9 @@ public class AdminUserController {
     @GetMapping("/user")
     public String getCompany(@RequestParam(value = "keyword", defaultValue = "all") String keyword, Model model) {
         List<User> res = new LinkedList<>();
-        try {
-            Long id = Long.parseLong(keyword);
-            Optional<User> user = userService.findById(id);
+        if(idChecking(keyword)!=null){
+            Optional<User> user = userService.findById(idChecking(keyword));
             user.ifPresent(res::add);
-        } catch (NumberFormatException e) {
-            log.info("keyword is not number");
         }
         if (keyword.equals("all")) {
             res.addAll(userService.findAll());
@@ -46,13 +36,34 @@ public class AdminUserController {
     }
 
     @PostMapping("/user/delete")
-    public String deleteCompany(@RequestParam(value = "keyword") Long id) {
-        log.info("request param is "+ id);
-        if(id!=null){
-            Optional<User> company = userService.findById(id);
-            company.ifPresent(userService::delete);
-            log.info("та простит меня господь, но мне лень сейчас писать апдейт");
+    public String deleteCompany(@RequestParam(value = "keyword") String keyword) {
+        if (idChecking(keyword) != null) {
+            Optional<User> user = userService.findById(idChecking(keyword));
+            user.ifPresent(userService::delete);//fixme update!
         }
         return "redirect:/user";
+    }
+
+    @GetMapping("/user/add")
+    public String getAddUser() {
+        return "admin_user_creating";
+    }
+
+    @PostMapping("/user/add")
+    public String postAddUser(@ModelAttribute("userForm") User user) {
+        userService.registerByAdmin(user);
+        log.info(user.toString() + "is created");
+        return "redirect:/user";
+    }
+
+    static Long idChecking(String keyword) {
+        try {
+            keyword = keyword.replaceAll("\\s","");
+            Long id = Long.parseLong(keyword);
+            return id;
+        } catch (NumberFormatException e) {
+            log.info("parameter is not number, numberFormatException message is: {}",e.getMessage());
+        }
+        return null;
     }
 }

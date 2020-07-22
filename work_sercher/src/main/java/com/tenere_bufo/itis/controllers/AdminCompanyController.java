@@ -1,24 +1,17 @@
 package com.tenere_bufo.itis.controllers;
 
 import com.tenere_bufo.itis.model.Company;
-import com.tenere_bufo.itis.model.User;
-import com.tenere_bufo.itis.security.details.UserDetailsImpl;
 import com.tenere_bufo.itis.services.CompanyService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+
+import static com.tenere_bufo.itis.controllers.AdminUserController.idChecking;
 
 @Slf4j
 @Controller
@@ -33,12 +26,9 @@ public class AdminCompanyController {
     @GetMapping("/comp")
     public String getCompany(@RequestParam(value = "keyword", defaultValue = "all") String keyword, Model model) {
         List<Company> res = new LinkedList<>();
-        try {
-            Long id = Long.parseLong(keyword);
-            Optional<Company> company = companyService.findById(id);
+        if (idChecking(keyword) != null) {
+            Optional<Company> company = companyService.findById(idChecking(keyword));
             company.ifPresent(res::add);
-        } catch (NumberFormatException e) {
-            log.info("keyword is not number");
         }
         if (keyword.equals("all")) {
             res.addAll(companyService.findAll());
@@ -47,30 +37,32 @@ public class AdminCompanyController {
         return "admin_company";
     }
 
-   /* @PostMapping("/comp/add")
-    public ResponseEntity<Company> addCompany(@RequestBody @Valid Company company, HttpServletRequest request) {
-        if (checkOnRoleAdmin(request)) {
-            companyService.save(company);
-            return ResponseEntity.status(200).build();
-        } else {
-            return ResponseEntity.status(403).build();
-        }
-    }*/
+    @GetMapping("/comp/add")
+    public String getAddComppany() {
+        return "admin_company_creating";
+    }
+
+    @PostMapping("/comp/add")
+    public String postAddCompany(@ModelAttribute("companyForm") Company company) {
+        companyService.registerByAdmin(company);//fixme написать создание компании
+        log.info(company.toString() + "is created");
+        return "redirect:/comp";
+    }
 
     @PostMapping("/comp/delete")
-    public String deleteCompany(@RequestParam(value = "keyword") Long id) {
-        log.info("request param is "+ id);
+    public String deleteCompany(@RequestParam(value = "keyword") String keyword) {
         /*if (checkOnRoleAdmin(request)) {
             companyService.delete(company);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.status(403).build();
         }*/
-        if(id!=null){
-        Optional<Company> company = companyService.findById(id);
-        company.ifPresent(companyService::delete);
-        log.info("та простит меня господь, но мне лень сейчас писать апдейт");
+        if (idChecking(keyword) != null) {
+            Optional<Company> company = companyService.findById(idChecking(keyword));
+            company.ifPresent(companyService::delete);//fixme update!
         }
         return "redirect:/comp";
     }
+
+
 }

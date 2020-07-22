@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
     private final static String CAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
 
 
-
     @Value("${recaptcha.secret}")
     private String secret;
 
@@ -40,25 +39,22 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
         this.restTemplate = restTemplate;
         this.rolesService = rolesService;
-        this.authenticationManager=authenticationManager;
+        this.authenticationManager = authenticationManager;
     }
 
     @Override
     public void register(User user) {
-        Optional<Role> roleUser = rolesService.findByName("ROLE_USER");
-        if (roleUser.isPresent()) {
-            Set<Role> userRoles = new HashSet<>();
-            userRoles.add(roleUser.get());
-            user.setRoles(userRoles);
-        }
-        String hashPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hashPassword);
-        user.setStatus(State.NOT_ACTIVE);
-        user.setToken(generateNewToken());
-        user.setCreated(new Date());
-        user.setUpdated(new Date());
+        registrationProcess(user, "ROLE_USER", "NOT_ACTIVE");
         User registeredUser = userRepository.save(user);
         log.info("IN register - user: {} successfully registered", registeredUser);
+    }
+
+    @Override
+    public void registerByAdmin(User user) {
+        //password,name,email
+        registrationProcess(user, user.getRoleFromForm(), "ACTIVE");
+        User registeredUser = userRepository.save(user);
+        log.info("IN register - user: {} successfully registered by admin", registeredUser);
     }
 
     private static String generateNewToken() {
@@ -88,6 +84,24 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    void registrationProcess(User user, String role, String status){
+        try {
+            Optional<Role> roleUser = rolesService.findByName(role);
+            if (roleUser.isPresent()) {
+                Set<Role> userRoles = new HashSet<>();
+                userRoles.add(roleUser.get());
+                user.setRoles(userRoles);
+            }
+            String hashPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hashPassword);
+            user.setStatus(State.valueOf(status));
+            user.setToken(generateNewToken());
+            user.setCreated(new Date());
+            user.setUpdated(new Date());
+        } catch (IllegalArgumentException e){
+            log.warn("unnable to create user : " + e.getMessage());
+        }
+    }
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
@@ -101,11 +115,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(User user) {
         userRepository.delete(user);
+        log.info("{} was deleted", user);
     }
 
     @Override
     public void add(User user) {
         userRepository.save(user);
+        log.info("user: {} was added to database", user );
     }
 
     @Override

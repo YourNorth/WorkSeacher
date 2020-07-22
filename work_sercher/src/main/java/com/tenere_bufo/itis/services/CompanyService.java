@@ -20,4 +20,5 @@ public interface CompanyService {
     List<Company> findAll();
     Company save(Company company);
     void delete(Company company);
+    void registerByAdmin(Company company);
 }
